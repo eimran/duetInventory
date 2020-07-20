@@ -1,0 +1,280 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="DUET Inventory Management System">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <meta name="author" content="">
+
+
+  <!-- Title -->
+  <title>DUET Inventory Management System</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href=" {% static 'accounts/img/core-img/favicon.ico' %}">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+
+
+<!--  <link href="{% static 'accounts/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">-->
+<!--  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">-->
+
+<!--  &lt;!&ndash; Custom styles for this template&ndash;&gt;-->
+<!--  <link href="{% static 'accounts/css/sb-admin-2.min.css" rel="stylesheet' %}">-->
+
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preload-content">
+      <div id="dento-load"></div>
+    </div>
+  </div>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area">
+    <!-- Top Header Area -->
+    <div class="top-header-area">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <!-- Top Content -->
+          <div class="col-6 col-md-9 col-lg-8">
+            <div class="top-header-content">
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="ICT Cell, Dhaka University of Engineering & Technology, Gazipur"><i class="fa fa-map-marker"></i> <span>ICT Cell, Dhaka University of Engineering & Technology, Gazipur</span></a>
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="ictcell@duet.ac.bd"><i class="fa fa-envelope"></i> <span>ictcell@duet.ac.bd</span></a>
+            </div>
+          </div>
+          <!-- Top Header Social Info -->
+          <div class="col-6 col-md-3 col-lg-4">
+            <div class="top-header-social-info text-right">
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Top Header End -->
+
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+      <div class="classy-nav-container breakpoint-off">
+        <div class="container">
+          <!-- Classy Menu -->
+          <nav class="classy-navbar justify-content-between" id="dentoNav">
+
+            <!-- Logo -->
+            <a class="nav-brand" href="{% url 'home' %}"><img src="{% static 'accounts/img/core-img/logo.png' %}" alt=""></a>
+
+            <!-- Navbar Toggler -->
+            <div class="classy-navbar-toggler">
+              <span class="navbarToggler"><span></span><span></span><span></span></span>
+            </div>
+
+            <!-- Menu -->
+            <div class="classy-menu">
+
+              <!-- Close Button -->
+              <div class="classycloseIcon">
+                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+              </div>
+
+
+              <!-- Nav Start -->
+              <div class="classynav">
+                <ul id="nav">
+                  <li><a href="{% url 'home' %}">Home</a></li>
+
+                  <!--
+                  <li><a href="#">Pages</a>
+                    <ul class="dropdown">
+                      <li><a href="{% url 'home' %}">- Home</a></li>
+                      <li><a href="about.html">- About Us</a></li>
+                      <li><a href="service.html">- Service</a></li>
+                      <li><a href="#">- Pricing</a></li>
+                      <li><a href="blog.html">- Blog</a></li>
+                      <li><a href="blog-details.html">- Blog Details</a></li>
+                      <li><a href="#">- Contact</a></li>
+                      <li><a href="#">- Dropdown</a>
+                        <ul class="dropdown">
+                          <li><a href="#">- Dropdown Item</a></li>
+                          <li><a href="#">- Dropdown Item</a>
+                            <ul class="dropdown">
+                              <li><a href="#">- Even Dropdown</a></li>
+                              <li><a href="#">- Even Dropdown</a></li>
+                              <li><a href="#">- Even Dropdown</a></li>
+                              <li><a href="#">- Even Dropdown</a></li>
+                            </ul>
+                          </li>
+                          <li><a href="#">- Dropdown Item</a></li>
+                          <li><a href="#">- Dropdown Item</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  -->
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Service</a></li>
+                  <!--
+                  <li><a href="#">Blog</a>
+                    <ul class="dropdown">
+                      <li><a href="blog.html">- Blog</a></li>
+                      <li><a href="blog-details.html">- Blog Details</a></li>
+                    </ul>
+                  </li>
+                  -->
+                  <li><a href="#">Contact</a></li>
+                  <li><a class="nav-link" href="{% url 'user_register' %}">Register</a></li>
+                </ul>
+              </div>
+              <!-- Nav End -->
+            </div>
+
+            <!-- Booking Now Button -->
+            <a href="{% url 'login' %}" class="btn dento-btn booking-btn">Sign In</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+
+{% block content %}
+
+
+
+
+{% endblock %}
+
+
+
+
+
+  <!-- ***** Footer Area Start ***** -->
+  <footer class="footer-area bg-img bg-gradient-overlay" style="background-image: url({% static 'accounts/img/bg-img/3.jpg' %});">
+    <div class="container">
+      <div class="row">
+        <!-- Single Footer Widget -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="single-footer-widget">
+            <h5 class="widget-title">Contact Us</h5>
+            <p>ICT Cell, Dhaka University of Engineering & Technology (DUET) </p>
+            <div class="footer-contact">
+              <p><i class="icon_pin"></i> Shimultoly Road, Joydebpur, Gazipur-1707</p>
+              <p><i class="icon_phone"></i>+88-02-49274034-53 /1233</p>
+              <p><i class="icon_mail"></i>ictcell@duet.ac.bd</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Footer Widget -->
+
+<!--        <div class="col-12 col-sm-6 col-lg">-->
+<!--          <div class="single-footer-widget">-->
+<!--            &lt;!&ndash; Widget Title &ndash;&gt;-->
+<!--            <h5 class="widget-title">Opening Hours</h5>-->
+
+<!--            &lt;!&ndash; Opening Hours &ndash;&gt;-->
+<!--            <ul class="opening-hours">-->
+<!--              <li><span>Mon-Wed</span> <span>8.00-18.00</span></li>-->
+<!--              <li><span>Thu-Fri</span> <span>8.00-17.00</span></li>-->
+<!--              <li><span>Sat</span> <span>9.00-17.00</span></li>-->
+<!--              <li><span>Sun</span> <span>10.00-17.00</span></li>-->
+<!--              <li><span>Holiday</span> <span>Closed</span></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <!-- Single Footer Widget -->
+        <div class="col-12 col-sm-6 col-lg">
+          <div class="single-footer-widget">
+            <!-- Widget Title -->
+            <h5 class="widget-title">Quick Link</h5>
+
+            <!-- Quick Links Nav -->
+            <nav>
+              <ul class="quick-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">DUET Website</a></li>
+                <li><a href="#">ICT CELL</a></li>
+                <li><a href="#">Inventory</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Advisors</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Team Members</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Single Footer Widget -->
+        <div class="col-12 col-sm-6 col-lg">
+          <div class="single-footer-widget">
+            <!-- Widget Title -->
+            <h5 class="widget-title">Suggestions</h5>
+
+            <p>Let us know if you have any particular suggestions or query </p>
+            <!-- Suggestions Form -->
+            <div class="footer-newsletter-form">
+              <form action="#" method="post">
+                <input type="text" name="nl-email" value="" placeholder="Comments">
+                <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+              </form>
+            </div>
+
+            <!-- Social Info -->
+            <div class="footer-social-info">
+              <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copywrite Area -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="copywrite-content">
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This portal is made for DUET Inventory Management <i class="fa fa-heart-o" aria-hidden="true"></i>  Powered by <a href="https://ictcell.duet.ac.bd" target="_blank">ICT Cell</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ***** Footer Area End ***** -->
+
+  <!-- ******* All JS ******* -->
+  <!-- jQuery js -->
+  <script src="{% static 'accounts/js/jquery.min.js' %}"></script>
+  <!-- Popper js -->
+  <script src="{% static 'accounts/js/popper.min.js' %}"></script>
+  <!-- Bootstrap js -->
+  <script src="{% static 'accounts/js/bootstrap.min.js' %}"></script>
+  <!-- All js -->
+  <script src="{% static 'accounts/js/dento.bundle.js' %}"></script>
+  <!-- Active js -->
+  <script src="{% static 'accounts/js/default-assets/active.js' %}"></script>
+
+
+</body>
+
+</html>

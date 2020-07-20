@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <!-- ***** Welcome Area Start ***** -->
+  <section class="welcome-area">
+    <!-- Welcome Slides -->
+    <div class="welcome-slides owl-carousel">
+      <!-- Single Welcome Slide -->
+      <div class="welcome-welcome-slide bg-img bg-gradient-overlay jarallax" style="background-image: url({% static 'accounts/img/bg-img/1.jpg' %});">
+        <div class="container h-75">
+          <div class="row h-75 align-items-center">
+            <div class="col-12">
+              <!-- Welcome Text -->
+              <div class="welcome-text text-center">
+                <h2 data-animation="fadeInUp" data-delay="100ms">Welcome to DUET Inventory Management System</h2>
+                <p data-animation="fadeInUp" data-delay="300ms">As a leading IT innovator, DUET ICT Cell is opening up exciting new opportunities for managing all inventory of DUET in a common platform.</p>
+                <div class="welcome-btn-group">
+                  <a href="{% url 'user_register' %}" class="btn dento-btn mx-2" data-animation="fadeInUp" data-delay="500ms">Register</a>
+                  <a href="{% url 'login' %}" class="btn dento-btn mx-2 active" data-animation="fadeInUp" data-delay="700ms">Sign In</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Single Welcome Slide -->
+      <div class="welcome-welcome-slide bg-img bg-gradient-overlay jarallax" style="background-image: url({% static 'accounts/img/bg-img/2.png' %});">
+        <div class="container h-75">
+          <div class="row h-75 align-items-center">
+            <div class="col-12">
+              <!-- Welcome Text -->
+              <div class="welcome-text text-center">
+                <h2 data-animation="fadeInDown" data-delay="100ms">Welcome to DUET Inventory Management System</h2>
+                <p data-animation="fadeInDown" data-delay="300ms">As a leading IT innovator, DUET ICT Cell is opening up exciting new opportunities for managing all inventory of DUET in a common platform.</p>
+                <div class="welcome-btn-group">
+                  <a href="{% url 'user_register' %}" class="btn dento-btn mx-2" data-animation="fadeInDown" data-delay="500ms">Register</a>
+                  <a href="{% url 'login' %}" class="btn dento-btn mx-2 active" data-animation="fadeInDown" data-delay="700ms">Sign In</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ***** Welcome Area End ***** -->
+
+
+{% endblock %}

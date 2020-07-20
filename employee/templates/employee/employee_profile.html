@@ -1,0 +1,17 @@
+{% extends 'employee/base.html' %}
+
+{% block content %}
+
+<h1>The input element</h1>
+
+<form action="register" method='post'>
+
+  {% csrf_token %}
+
+  Enter 1st number: <input type="text" name="num1"><br>
+  Enter 2nd number: <input type="text" name="num2"><br>
+
+  <button type='submit'>Submit </button>
+</form>
+
+{% endblock %}
