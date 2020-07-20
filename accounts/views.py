@@ -34,7 +34,7 @@ def user_register(request):
         return redirect('/')
 
     else:
-        return render(request, 'user_register.html')
+        return render(request, 'accounts/user_register.html')
     # return HttpResponse("Employee index")
 
 
@@ -53,7 +53,7 @@ def login(request):
             return redirect('login')
 
     else:
-        return render(request, 'login.html')
+        return render(request, 'accounts/login.html')
 
 
 def dashboard(request):
@@ -66,4 +66,4 @@ def logout(request):
 
 
 def password_reset(request):
-    return render(request, 'password_reset.html')
+    return render(request, 'accounts/password_reset.html')
