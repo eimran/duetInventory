@@ -26,6 +26,8 @@
                         <th>Created At</th>
                         <th>Created By</th>
                         <th>Active</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -37,6 +39,9 @@
                         <th>Created At</th>
                         <th>Created By</th>
                         <th>Active</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+
                     </tr>
                   </tfoot>
                   <tbody>
@@ -49,6 +54,8 @@
                         <td>{{ category.created_at }}</td>
                         <td>{{ category.created_by }}</td>
                         <td>{{ category.active_status }}</td>
+                        <td><small><a href="{% url 'category_update' category.pk %}">Edit</a></small></td>
+                        <td><small><a href="{% url 'category_delete' category.pk %}">Delete</a></small></td>
                     </tr>
                     {% endfor %}
 

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView
+from django.views.generic import CreateView, UpdateView, DeleteView, FormView
 from django.contrib import messages
 
 from .models import Category, Product
-from .forms import CategoryCreateForm, ProductCreateForm
+from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm, ProductUpdateForm
 
 
 def category_add(request):
@@ -32,6 +32,19 @@ def category_add(request):
         return render(request, 'product/category_add.html', context)
 
 
+class CategoryUpdateView(UpdateView):
+    model = Category
+    template_name = 'product/category/category_update.html'
+    form_class = CategoryUpdateForm
+    #fields = ['category_name', 'details', 'parent_id']
+
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+    template_name = 'product/category/category_delete.html'
+    success_url = reverse_lazy('category_list')
+
+
 def category_list(request):
     categories = Category.objects.order_by('id').all()
     context = {'categories': categories}
@@ -57,6 +70,19 @@ class ProductCreateView(CreateView):
             messages.info(request, 'product inserted')
         # return render(request, 'product/product_list.html', {'form': form})
         return redirect('product_list')
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    template_name = 'product/product/product_update.html'
+    form_class = ProductUpdateForm
+    #fields = ['p_name', 'country_of_origin', 'brand', 'p_details']
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'product/product/product_delete.html'
+    success_url = reverse_lazy('product_list')
 
 
 def product_list(request):

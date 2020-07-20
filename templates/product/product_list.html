@@ -26,6 +26,8 @@
                         <th>Product Details</th>
                         <th>Created At</th>
                         <th>Created By</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -37,6 +39,8 @@
                         <th>Product Details</th>
                         <th>Created At</th>
                         <th>Created By</th>
+                        <th>Update</th>
+                        <th>Delete</th>
 
                     </tr>
                   </tfoot>
@@ -50,6 +54,8 @@
                         <td>{{ product.p_details }}</td>
                         <td>{{ product.created_at }}</td>
                         <td>{{ product.created_by }}</td>
+                        <td><small><a href="{% url 'product_update' product.pk %}">Edit</a></small></td>
+                        <td><small><a href="{% url 'product_delete' product.pk %}">Delete</a></small></td>
 
                     </tr>
                     {% endfor %}

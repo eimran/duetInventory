@@ -1,5 +1,5 @@
 from django.db import models
-#from django.urls import reverse
+from django.urls import reverse
 from django.conf import settings
 
 
@@ -24,6 +24,9 @@ class Category(models.Model):
         return self.id
         # return self.parent_id.category_name
 
+    def get_absolute_url(self):
+        return reverse('category_list')
+
 
 class Product(models.Model):
     p_name = models.CharField(max_length=100)
@@ -36,6 +39,8 @@ class Product(models.Model):
     # def get_absolute_url(self):
     #     return reverse('products:detail', args=[self.id])
 
+    def get_absolute_url(self):
+        return reverse('product_list')
+
     def __str__(self):
         return self.p_name
-
