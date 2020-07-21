@@ -1,16 +1,17 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User, auth
+from  django.contrib.auth.models import User, auth
 from django.contrib import messages
-from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate, logout
 
-from accounts.forms import RegistrationForm, AccountAuthenticationForm
+from accounts.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
 from employee.models import Employee
+
 
 # def home(request):
 #     return render(request, 'home.html', {})
 
 def registration_view(request):
+
     context = {}
     if request.POST:
         form = RegistrationForm(request.POST)
@@ -29,8 +30,7 @@ def registration_view(request):
     else:
         form = RegistrationForm()
         # context['registration_form'] = form
-
-    context = {'registration_form': form}
+        context = {'registration_form': form}
     return render(request, 'accounts/user_register.html', context)
 
 
@@ -56,6 +56,8 @@ def login_view(request):
         form = AccountAuthenticationForm()
 
     context['login_form'] = form
+
+    # print(form)
     return render(request, "accounts/login.html", context)
 
 
@@ -64,13 +66,34 @@ def logout_view(request):
     return redirect("/")
 
 
-def password_reset(request):
-    return render(request, 'accounts/password_reset.html')
+# def password_reset(request):
+#     return render(request, 'accounts/password_reset.html')
+
+def account_view(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    context = {}
+
+    if request.POST:
+        form = AccountUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+    else:
+        form = AccountUpdateForm(
+            initial={
+                "email": request.user.email,
+                "username": request.user.username,
+                "employee": request.user.employee,
+                # "password": request.user.password,
+            }
+        )
+    context['account_form'] = form
+    return render(request, 'accounts/account.html', context)
 
 
 def dashboard(request):
     return render(request, 'product/product_manage_dashboard.html', {})
-
 
 #
 # def user_register(request):

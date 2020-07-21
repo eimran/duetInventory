@@ -1,7 +1,4 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.contrib.auth.models import User, PermissionsMixin
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -71,3 +68,21 @@ def has_perm(self, perm, obj=None):
 
 def has_module_perms(self, app_label):
     return self.is_superuser
+
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+#
+#
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
+#
+#
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
+
+# class User(AbstractUser):
+#     employee_id = models.ForeignKey(Employee, verbose_name='Employee', on_delete=models.PROTECT)
