@@ -20,12 +20,11 @@ class Category(models.Model):
     # def __str__(self):
     #     return "<Category: {} {}>".format(self.category_name)
 
-    def __repr__(self):
-        return self.id
-        # return self.parent_id.category_name
-
     def get_absolute_url(self):
         return reverse('category_list')
+
+    def __str__(self):
+        return self.category_name
 
 
 class Product(models.Model):

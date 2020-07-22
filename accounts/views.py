@@ -23,7 +23,7 @@ def registration_view(request):
             employee = form.cleaned_data.get('employee')
             account = authenticate(email=email, password=raw_password, username=username, employee=employee)
             login(request, account)
-            return redirect('/')
+            return redirect('dashboard')
         else:
             context['registration_form'] = form
 

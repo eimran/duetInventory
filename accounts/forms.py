@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
-
 from accounts.models import Account
 from employee.models import Employee
 
@@ -15,11 +14,22 @@ class RegistrationForm(UserCreationForm):
 
 
 class AccountAuthenticationForm(forms.ModelForm):
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    #password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
     class Meta:
         model = Account
         fields = ('username', 'password')
+
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(AccountAuthenticationForm, self).__init__(*args, **kwargs)
+        self.fields['username'].label = "User Name"
+        self.fields['password'].label = "Password"
+
 
     def clean(self):
         if self.is_valid():

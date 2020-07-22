@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, FormView
 from django.contrib import messages
-
 from .models import Category, Product
 from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm, ProductUpdateForm
 
@@ -12,6 +11,10 @@ def category_add(request):
         category_name = request.POST.get('category_name', '')
         details = request.POST.get('details', '')
         parent_id = request.POST.get('parent_id', '')
+        if parent_id != '':
+            parent_object = Category.objects.get(id=parent_id)
+        else:
+            parent_object = default = None
         parent_object = Category.objects.get(id=parent_id)
         current_user = request.user
 

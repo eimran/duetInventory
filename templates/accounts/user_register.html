@@ -1,124 +1,66 @@
 {% extends 'accounts/base.html' %}
 
-<!--{% block title %} Employee Registration{% endblock %}-->
-
 {% block content %}
 
+<div class="container">
 
-<h1>User Details</h1>
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
 
-<form action=""  method='post'>
+      <div class="col-xl-12 col-lg-12 col-md-12">
 
-  {% csrf_token %}
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-2" > </div>
+              <div class="col-lg-8" >
+                <div class="p-4">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">User Registration Form</h1>
+                  </div>
 
-<!--  Enter First Name: <input type="text" name="first_name" placeholder="First Name"><br>-->
-<!--  Enter Last Name: <input type="text" name="last_name" placeholder="Last Name"><br>-->
-<!--  Enter User Name: <input type="text" name="user_name" placeholder="User Name"><br>-->
-<!--  Enter Email: <input type="email" name="email" placeholder="Email"><br>-->
-<!--  Enter DUET Employee No: <input type="text" name="employee_no" placeholder="Employee No"><br>-->
-<!--  Enter Password: <input type="password" name="password" placeholder="Password"><br>-->
-<!--  Confirm Password: <input type="password" name="confirm_password" placeholder="Confirm Password"><br>-->
+                    <form action=""  method='post'>
 
-  {% for field in registration_form %}
-      <p>
-          {{ field.label_tag }}
-          {{ field }}
+                      {% csrf_token %}
 
-          {% if field.help_text  %}
-              <small style="color: grey;">{{ field.help_text }}</small>
-          {% endif %}
+                      {% for field in registration_form %}
+                          <p>
+                        {{ field.label_tag }}
+                        {{ field }}
 
-          {% for error in field.errors %}
+<!--                              {% if field.help_text  %}-->
+<!--                                  <small style="color: grey;">{{ field.help_text }}</small>-->
+<!--                              {% endif %}-->
 
-            <p style="color: red">{{ error }}</p>
-          {% endfor %}
-      </p>
-  {% endfor %}
+                              {% for error in field.errors %}
+                                <p style="color: red">{{ error }}</p>
+                              {% endfor %}
+                          </p>
+                      {% endfor %}
 
+                      {% if registration_form.non_field_errors %}
+                        <div style="color: red">
+                          <p>{{registration_form.non_field_errors}}</p>
+                        </div>
 
-  {% if registration_form.non_field_errors %}
-    <div style="color: red">
-      <p>{{registration_form.non_field_errors}}</p>
+                      {% endif %}
+
+                      <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+
+                </div>
+              </div>
+              <div class="col-lg-2" > </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
-  {% endif %}
-
-
-  <button type='submit'>Submit </button>
-</form>
-
-
-
-
-
-
-<!--<div class="container">-->
-
-<!--    &lt;!&ndash; Outer Row &ndash;&gt;-->
-<!--    <div class="row justify-content-center">-->
-
-<!--      <div class="col-xl-12 col-lg-12 col-md-12">-->
-
-<!--        <div class="card o-hidden border-0 shadow-lg my-5">-->
-<!--          <div class="card-body p-0">-->
-<!--            &lt;!&ndash; Nested Row within Card Body &ndash;&gt;-->
-<!--            <div class="row">-->
-
-<!--              <div class="col-2"> </div>-->
-<!--              <div class="col-8">-->
-<!--                <div class="contact-form">-->
-<!--                  &lt;!&ndash; Section Heading &ndash;&gt;-->
-<!--                  <div class="p-4">-->
-<!--                  <div class="text-center">-->
-<!--                    <h1 class="h4 text-gray-900 mb-4">Create Account!</h1>-->
-<!--                  </div>-->
-
-
-<!--              &lt;!&ndash; Form &ndash;&gt;-->
-<!--                  <form action="user_register" method="post">-->
-<!--                      {% csrf_token %}-->
-<!--                    <div class="row">-->
-<!--                      <div class="col-lg-6">-->
-<!--                        <input type="text" name="first_name" class="form-control mb-30"  placeholder="First Name">-->
-
-<!--                      </div>-->
-<!--                      <div class="col-lg-6">-->
-<!--                        <input type="text" name="last_name" class="form-control mb-30" placeholder="Last Name">-->
-<!--                      </div>-->
-<!--                      <div class="col-12">-->
-<!--                        <input type="text" name="user_name" class="form-control mb-30" placeholder="User Name">-->
-<!--                      </div>-->
-<!--                      <div class="col-12">-->
-<!--                        <input type="email" name="email" class="form-control mb-30"  placeholder="Email">-->
-<!--                      </div>-->
-<!--                       <div class="col-12">-->
-<!--                         <input type="password" name="password" class="form-control mb-30" placeholder="Password">-->
-<!--                      </div>-->
-<!--                        <div class="col-12">-->
-<!--                         <input type="password" name="confirm_password" class="form-control mb-30" placeholder="Confirm Password">-->
-<!--                      </div>-->
-
-<!--                      <div class="col-12">-->
-<!--                        <button type="submit" class="btn dento-btn">Submit</button>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </form>-->
-<!--                  </div>-->
-<!--                  <div>-->
-<!--                    {% for message in messages %}-->
-<!--                    <h3> {{message}}</h3>-->
-<!--                    {% endfor %}-->
-<!--                  </div>-->
-
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--</div>-->
-
+  </div>
 
 
 {% endblock %}
