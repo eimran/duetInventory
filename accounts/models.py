@@ -30,7 +30,7 @@ class MyAccountManager(BaseUserManager):
             email=self.normalize_email(email),
             password=password,
             username=username,
-            employee=employee,
+            employee=find_emp,
         )
 
         user.is_admin = True
