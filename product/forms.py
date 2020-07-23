@@ -65,13 +65,14 @@ class ProductCreateForm(forms.ModelForm):
 class ProductUpdateForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('p_name', 'country_of_origin', 'brand', 'p_details')
+        fields = ('p_name', 'country_of_origin', 'brand', 'p_details', 'last_modified_by')
 
         widgets = {
             'p_name': forms.TextInput(attrs={'class': 'form-control'}),
             'country_of_origin': forms.TextInput(attrs={'class': 'form-control'}),
             'brand': forms.TextInput(attrs={'class': 'form-control'}),
             'p_details': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_modified_by': forms.HiddenInput()
         }
 
     def __init__(self, *args, **kwargs):
@@ -80,3 +81,4 @@ class ProductUpdateForm(forms.ModelForm):
         self.fields['country_of_origin'].label = "Country of Origin"
         self.fields['brand'].label = "Brand"
         self.fields['p_details'].label = "Details"
+        self.fields['last_modified_by'].value = "1"

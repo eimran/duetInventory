@@ -26,7 +26,7 @@ class EmployeeUpdateForm(forms.ModelForm):
     class Meta:
         model = Employee
         fields = ('first_name', 'last_name', 'cell_no', 'email', 'address', 'gender', 'dob', 'joining_date')
-        #
+
         # widgets = {
         #     'p_name': forms.TextInput(attrs={'class': 'form-control'}),
         #     'country_of_origin': forms.TextInput(attrs={'class': 'form-control'}),

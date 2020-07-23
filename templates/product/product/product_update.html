@@ -3,7 +3,7 @@
 {% block content %}
 
 <!--{% load crispy_forms_tags %}-->
-<div class="container-fluid">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">Update Product</h1>
   <p class="mb-4">  </p>
@@ -21,7 +21,6 @@
                     {% csrf_token %}
 
                     {{ form  }}
-
                     <br>
 
                     <button type="submit" class="btn btn-primary">Update</button>

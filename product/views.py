@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, FormView
 from django.contrib import messages
+from django.conf import settings
 from .models import Category, Product
 from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm, ProductUpdateForm
 
@@ -79,7 +81,6 @@ class ProductUpdateView(UpdateView):
     template_name = 'product/product/product_update.html'
     form_class = ProductUpdateForm
     #fields = ['p_name', 'country_of_origin', 'brand', 'p_details']
-
 
 class ProductDeleteView(DeleteView):
     model = Product
