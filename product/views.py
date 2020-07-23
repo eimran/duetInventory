@@ -27,7 +27,6 @@ def category_add(request):
 
         return render(request, 'product/category/category_list.html', context)
 
-
     else:
         context = {}
         context['form'] = CategoryCreateForm()
