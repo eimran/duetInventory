@@ -62,7 +62,6 @@ class ProductCreateForm(forms.ModelForm):
         self.fields['p_details'].label = "Details"
 
 
-
 class ProductUpdateForm(forms.ModelForm):
     class Meta:
         model = Product

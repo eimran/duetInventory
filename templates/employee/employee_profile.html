@@ -1,20 +1,52 @@
-{% extends 'product/product_base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 
-<h1>Employee Profile</h1>
 
-<form action="register" method='post'>
+   <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-  {% csrf_token %}
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Welcome {{user.employee.first_name}} {{user.employee.last_name}} !</h1>
+          <p class="mb-4">  </p>
 
-  <h2>{{ user.get_full_name }}</h2>
-<ul>
-  <li>Username: {{ user.username }}</li>
-  <li>Employee ID: {{ user.employee_id }}</li>
-</ul>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+<!--            <div class="card-header py-3">-->
+<!--              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
+<!--            </div>-->
+            <div class="card-body">
 
-  <button type='submit'>Submit </button>
-</form>
+              <form action="register" method='post'>
+
+                {% csrf_token %}
+
+                <h2>{{ user.get_full_name }}</h2>
+              <ul>
+
+                <li> Name: {{user.employee.first_name}} {{user.employee.last_name}} </li>
+                <li> Cell No: {{user.employee.cell_no}} </li>
+                <li> Email: {{user.employee.email}} </li>
+                <li> Address: {{user.employee.address}} </li>
+                <li> Gender: {{user.employee.gender}} </li>
+                <li> Date of Birth: {{user.employee.dob}} </li>
+                <li> Date of Joining: {{user.employee.joining_date}} </li>
+
+              </ul>
+
+                <button type='submit'>Submit </button>
+              </form>
+
+
+              <div class="table-responsive">
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      <!-- End of Main Content -->
 
 {% endblock %}

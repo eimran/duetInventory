@@ -25,14 +25,14 @@ def category_add(request):
         categories = Category.objects.order_by('id').all()
         context = {'categories': categories}
 
-        return render(request, 'product/category_list.html', context)
+        return render(request, 'product/category/category_list.html', context)
 
 
     else:
         context = {}
         context['form'] = CategoryCreateForm()
 
-        return render(request, 'product/category_add.html', context)
+        return render(request, 'product/category/category_add.html', context)
 
 
 class CategoryUpdateView(UpdateView):
@@ -51,11 +51,11 @@ class CategoryDeleteView(DeleteView):
 def category_list(request):
     categories = Category.objects.order_by('id').all()
     context = {'categories': categories}
-    return render(request, 'product/category_list.html', context)
+    return render(request, 'product/category/category_list.html', context)
 
 
 class ProductCreateView(CreateView):
-    template_name = 'product/product_add.html'
+    template_name = 'product/product/product_add.html'
     form_class = ProductCreateForm
 
     # def get_initial(self, *args, **kwargs):
@@ -91,4 +91,4 @@ class ProductDeleteView(DeleteView):
 def product_list(request):
     products = Product.objects.order_by('id').all()
     context = {'products': products}
-    return render(request, 'product/product_list.html', context)
+    return render(request, 'product/product/product_list.html', context)
