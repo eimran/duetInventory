@@ -1,5 +1,5 @@
 from django import forms
-from .models import Employee
+from .models import Employee, Department, Faculty
 
 
 class EmployeeCreateForm(forms.ModelForm):
@@ -37,3 +37,29 @@ class EmployeeUpdateForm(forms.ModelForm):
     # def __init__(self, *args, **kwargs):
     #     super(EmployeeUpdateForm, self).__init__(*args, **kwargs)
     #     self.fields['p_name'].label = "Product Name"
+
+
+class DeptCreateForm(forms.ModelForm):
+    class Meta:
+        model = Department
+        fields = ('name', 'code', 'acronym', 'description', 'type', 'faculty')
+
+
+class DeptUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Department
+        fields = ('name', 'code', 'acronym', 'description', 'type', 'faculty')
+
+
+class FacultyCreateForm(forms.ModelForm):
+    class Meta:
+        model = Faculty
+        fields = ('name', 'code', 'acronym', 'description', 'type')
+
+
+class FacultyUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Faculty
+        fields = ('name', 'code', 'acronym', 'description', 'type')
+
+

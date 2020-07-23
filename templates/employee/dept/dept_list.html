@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Employee Listing </h1>
+          <h1 class="h3 mb-2 text-gray-800">Department List</h1>
           <p class="mb-4">  </p>
 
           <!-- DataTales Example -->
@@ -19,11 +19,12 @@
                   <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Employee Name</th>
-                        <th>Cell No</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Gender</th>
+                        <th>Name</th>
+                        <th>Code</th>
+                        <th>Accronym</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Faculty</th>
                         <th>Update</th>
                         <th>Delete</th>
                     </tr>
@@ -31,27 +32,30 @@
                   <tfoot>
                     <tr>
                         <th>SL</th>
-                        <th>Employee Name</th>
-                        <th>Cell No</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Gender</th>
+                        <th>Name</th>
+                        <th>Code</th>
+                        <th>Accronym</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Faculty</th>
                         <th>Update</th>
                         <th>Delete</th>
 
                     </tr>
                   </tfoot>
                   <tbody>
-                    {% for employee in employees %}
+                    {% for department in departments %}
                     <tr>
-                        <td>{{ employee.id }}</td>
-                        <td>{{ employee.first_name }} {{ employee.last_name }}</td>
-                        <td>{{ employee.cell_no }}</td>
-                        <td>{{ employee.email }}</td>
-                        <td>{{ employee.address }}</td>
-                        <td>{{ employee.gender }}</td>
-                        <td><small><a href="{% url 'update_employee' employee.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
-                        <td><small><a href="{% url 'employee_delete' employee.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
+                        <td>{{ department.id }}</td>
+                        <td>{{ department.name }}</td>
+                        <td>{{ department.code }}</td>
+                        <td>{{ department.acronym }}</td>
+                        <td>{{ department.description }}</td>
+                        <td>{{ department.type }}</td>
+                        <td>{{ department.faculty }}</td>
+
+                        <td><small><a href="{% url 'dept_update' department.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
+                        <td><small><a href="{% url 'dept_delete' department.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
 
                     </tr>
                     {% endfor %}
