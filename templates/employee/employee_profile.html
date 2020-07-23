@@ -22,17 +22,17 @@
                 {% csrf_token %}
 
                 <h2>{{ user.get_full_name }}</h2>
-              <ul>
+                  <ul>
 
-                <li> Name: {{user.employee.first_name}} {{user.employee.last_name}} </li>
-                <li> Cell No: {{user.employee.cell_no}} </li>
-                <li> Email: {{user.employee.email}} </li>
-                <li> Address: {{user.employee.address}} </li>
-                <li> Gender: {{user.employee.gender}} </li>
-                <li> Date of Birth: {{user.employee.dob}} </li>
-                <li> Date of Joining: {{user.employee.joining_date}} </li>
+                    <li> Name: {{user.employee.first_name}} {{user.employee.last_name}} </li>
+                    <li> Cell No: {{user.employee.cell_no}} </li>
+                    <li> Email: {{user.employee.email}} </li>
+                    <li> Address: {{user.employee.address}} </li>
+                    <li> Gender: {{user.employee.gender}} </li>
+                    <li> Date of Birth: {{user.employee.dob}} </li>
+                    <li> Date of Joining: {{user.employee.joining_date}} </li>
 
-              </ul>
+                  </ul>
 
                 <button type='submit'>Submit </button>
               </form>

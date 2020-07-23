@@ -51,7 +51,7 @@
                         <td>{{ employee.address }}</td>
                         <td>{{ employee.gender }}</td>
                         <td><small><a href="{% url 'update_employee' employee.pk %}">Edit</a></small></td>
-                        <td><small><a href="#">Delete</a></small></td>
+                        <td><small><a href="{% url 'employee_delete' employee.pk %}">Delete</a></small></td>
 
                     </tr>
                     {% endfor %}
