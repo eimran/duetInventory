@@ -54,8 +54,8 @@
                         <td>{{ product.p_details }}</td>
                         <td>{{ product.created_at }}</td>
                         <td>{{ product.created_by }}</td>
-                        <td><small><a href="{% url 'product_update' product.pk %}">Edit</a></small></td>
-                        <td><small><a href="{% url 'product_delete' product.pk %}">Delete</a></small></td>
+                       <<td><small><a href="{% url 'product_update' product.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
+                        <td><small><a href="{% url 'product_delete' product.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
 
                     </tr>
                     {% endfor %}

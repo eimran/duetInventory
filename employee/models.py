@@ -57,7 +57,7 @@ class Department(models.Model):
     last_modified_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL,
                                          related_name='department_modified_by')
 
-    faculty = models.ForeignKey(Faculty, on_delete=models.PROTECT)
+    faculty = models.ForeignKey(Faculty, on_delete=models.PROTECT, null=True)
 
     def __str__(self):
         return self.name

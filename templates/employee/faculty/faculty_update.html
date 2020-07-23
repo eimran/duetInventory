@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--{% load crispy_forms_tags %}-->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Update Faculty</h1>
+  <p class="mb-4">  </p>
+
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-sm-3 col-md-3 col-lg-3"></div>
+
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                <form action="" method="POST">
+
+                    {% csrf_token %}
+
+                    {{ form  }}
+
+                    <br>
+
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3"></div>
+            </div>
+        </div>
+      </div>
+</div>
+
+    <br>
+    <div>
+      {% for message in messages %}
+      <h3> {{message}}</h3>
+      {% endfor %}
+    </div>
+
+{% endblock %}
