@@ -30,7 +30,6 @@ class AccountAuthenticationForm(forms.ModelForm):
         self.fields['username'].label = "User Name"
         self.fields['password'].label = "Password"
 
-
     def clean(self):
         if self.is_valid():
             username = self.cleaned_data['username']

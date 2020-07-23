@@ -1,4 +1,4 @@
-{% extends 'product/product_base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 
@@ -6,7 +6,7 @@
 <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Product Category Listing </h1>
+          <h1 class="h3 mb-2 text-gray-800">Product Listing </h1>
           <p class="mb-4">  </p>
 
           <!-- DataTales Example -->
@@ -19,43 +19,44 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                        <th>Category ID</th>
-                        <th>Category Name</th>
-                        <th>Details</th>
-                        <th>Parent Category</th>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Country of Origin</th>
+                        <th>Brand</th>
+                        <th>Product Details</th>
                         <th>Created At</th>
                         <th>Created By</th>
-                        <th>Active</th>
                         <th>Update</th>
                         <th>Delete</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                        <th>Category ID</th>
-                        <th>Category Name</th>
-                        <th>Details</th>
-                        <th>Parent Category</th>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Country of Origin</th>
+                        <th>Brand</th>
+                        <th>Product Details</th>
                         <th>Created At</th>
                         <th>Created By</th>
-                        <th>Active</th>
                         <th>Update</th>
                         <th>Delete</th>
 
                     </tr>
                   </tfoot>
                   <tbody>
-                    {% for category in categories %}
+                    {% for product in products %}
                     <tr>
-                        <td>{{ category.id }}</td>
-                        <td>{{ category.category_name }}</td>
-                        <td>{{ category.details }}</td>
-                        <td>{% if category.parent_id %}{{ category.parent_id.category_name }}{% endif %}</td>
-                        <td>{{ category.created_at }}</td>
-                        <td>{{ category.created_by }}</td>
-                        <td>{{ category.active_status }}</td>
-                        <td><small><a href="{% url 'category_update' category.pk %}">Edit</a></small></td>
-                        <td><small><a href="{% url 'category_delete' category.pk %}">Delete</a></small></td>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.p_name }}</td>
+                        <td>{{ product.country_of_origin }}</td>
+                        <td>{{ product.brand }}</td>
+                        <td>{{ product.p_details }}</td>
+                        <td>{{ product.created_at }}</td>
+                        <td>{{ product.created_by }}</td>
+                        <td><small><a href="{% url 'product_update' product.pk %}">Edit</a></small></td>
+                        <td><small><a href="{% url 'product_delete' product.pk %}">Delete</a></small></td>
+
                     </tr>
                     {% endfor %}
 

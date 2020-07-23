@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Employee Listing </h1>
+          <p class="mb-4">  </p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+<!--            <div class="card-header py-3">-->
+<!--              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
+<!--            </div>-->
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th>Employee Name</th>
+                        <th>Cell No</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Gender</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                        <th>SL</th>
+                        <th>Employee Name</th>
+                        <th>Cell No</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Gender</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    {% for employee in employees %}
+                    <tr>
+                        <td>{{ employee.id }}</td>
+                        <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+                        <td>{{ employee.cell_no }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td>{{ employee.address }}</td>
+                        <td>{{ employee.gender }}</td>
+                        <td><small><a href="{% url 'update_employee' employee.pk %}">Edit</a></small></td>
+                        <td><small><a href="#">Delete</a></small></td>
+
+                    </tr>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+
+{% endblock %}
