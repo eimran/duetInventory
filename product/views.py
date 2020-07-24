@@ -4,10 +4,11 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.conf import settings
-from .models import Category, Product, ProductItem, Repair, Status, Location
+from .models import Category, Product, ProductItem, Repair, Status, Location, Property
 from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm, \
     ProductUpdateForm, RepairCreateForm, RepairUpdateForm, ProductItemCreateForm, ProductItemUpdateForm, \
-    ProductStatusCreateForm, ProductStatusUpdateForm, ProductLocationCreateForm, ProductLocationUpdateForm
+    ProductStatusCreateForm, ProductStatusUpdateForm, ProductLocationCreateForm, ProductLocationUpdateForm, \
+    ProductPropertyCreateForm, ProductPropertyUpdateForm
 
 
 def category_add(request):
@@ -244,3 +245,43 @@ def product_location_list(request):
     locations = Location.objects.order_by('id').all()
     context = {'locations': locations}
     return render(request, 'product/product/location/product_location_list.html', context)
+
+
+class ProductPropertyCreateView(CreateView):
+    template_name = 'product/product/property/product_property_add.html'
+    form_class = ProductPropertyCreateForm
+
+    # def get_initial(self, *args, **kwargs):
+    #     initial = super(ProductCreateView, self).get_initial(**kwargs)
+    #     initial['category_name'] = 'My Product'
+    #     return initial
+
+    def post(self, request, *args, **kwargs):
+        form = ProductPropertyCreateForm(request.POST)
+        if form.is_valid():
+            property = form.save()
+            property.created_by = request.user
+            property.save()
+            messages.info(request, 'Product Property Inserted')
+        # return render(request, 'product/product_list.html', {'form': form})
+        return redirect('product_property_list')
+
+
+class ProductPropertyUpdateView(UpdateView):
+    model = Property
+    template_name = 'product/product/location/product_location_update.html'
+    form_class = ProductPropertyUpdateForm
+    success_url = reverse_lazy('product_property_list')
+
+
+class ProductPropertyDeleteView(DeleteView):
+    model = Property
+    template_name = 'product/product/property/product_property_delete.html'
+    success_url = reverse_lazy('product_property_list')
+
+
+def product_property_list(request):
+    properties = Property.objects.order_by('id').all()
+    context = {'properties': properties}
+    return render(request, 'product/product/property/product_property_list.html', context)
+

@@ -35,20 +35,20 @@
                   </thead>
 
                   <tbody>
-                    {% for product_item in product_items %}
+                    {% for productitem in product_items %}
                     <tr>
-                        <td>{{ product_item.id }}</td>
-                        <td>{{ product_item.p_item_name }}</td>
-                        <td>{{ product_item.qr_code_key }}</td>
-                        <td>{{ product_item.actual_cost }}</td>
-                        <td>{{ product_item.purchase_date }}</td>
-                        <td>{{ product_item.responsible_employee_id }}</td>
-                        <td>{{ product_item.dept_id }}</td>
-                        <td>{{ product_item.location_id }}</td>
-                        <td>{{ product_item.status_id }}</td>
+                        <td>{{ productitem.id }}</td>
+                        <td>{{ productitem.p_item_name }}</td>
+                        <td>{{ productitem.qr_code_key }}</td>
+                        <td>{{ productitem.actual_cost }}</td>
+                        <td>{{ productitem.purchase_date }}</td>
+                        <td>{{ productitem.responsible_employee_id }}</td>
+                        <td>{{ productitem.dept_id }}</td>
+                        <td>{{ productitem.location_id }}</td>
+                        <td>{{ productitem.status_id }}</td>
 
-                       <td><small><a href="{% url 'product_item_update' product_item.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
-                        <td><small><a href="{% url 'product_item_delete' product_item.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
+                        <td><small><a href="{% url 'product_item_update' productitem.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
+                        <td><small><a href="{% url 'product_item_delete' productitem.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
 
                     </tr>
                     {% endfor %}

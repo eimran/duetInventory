@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Product Property Listing </h1>
+          <p class="mb-4">  </p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th>Property Name</th>
+                        <th>Property Value</th>
+                        <th>Property Details</th>
+                        <th>Product ID</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {% for property in properties %}
+                    <tr>
+                        <td>{{ property.id }}</td>
+                        <td>{{ property.property_name }}</td>
+                        <td>{{ property.property_value }}</td>
+                        <td>{{ property.property_details }}</td>
+                        <td>{{ property.product_id }}</td>
+                        <td><small><a href="{% url 'product_property_update' property.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
+                        <td><small><a href="{% url 'product_property_delete' property.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Category, Product, ProductItem, Repair, Status, Location
+from .models import Category, Product, ProductItem, Repair, Status, Location, Property
 
 
 class CategoryCreateForm(forms.ModelForm):
@@ -223,19 +223,29 @@ class RepairCreateForm(forms.ModelForm):
         fields = ('details', 'repair_request_date', 'estimated_delivery_date', 'actual_delivery_date', 'estimated_cost',
                   'actual_cost', 'approved_by', 'responsible_employee_id', 'product_item_id')
 
-    #     widgets = {
-    #         'p_name': forms.TextInput(attrs={'class': 'form-control'}),
-    #         'country_of_origin': forms.TextInput(attrs={'class': 'form-control'}),
-    #         'brand': forms.TextInput(attrs={'class': 'form-control'}),
-    #         'p_details': forms.TextInput(attrs={'class': 'form-control'}),
-    #     }
-    #
-    # def __init__(self, *args, **kwargs):
-    #     super(ProductCreateForm, self).__init__(*args, **kwargs)
-    #     self.fields['p_name'].label = "Product Name"
-    #     self.fields['country_of_origin'].label = "Country of Origin"
-    #     self.fields['brand'].label = "Brand"
-    #     self.fields['p_details'].label = "Details"
+        widgets = {
+            'details': forms.TextInput(attrs={'class': 'form-control'}),
+            'repair_request_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'estimated_delivery_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'actual_delivery_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'estimated_cost': forms.TextInput(attrs={'class': 'form-control'}),
+            'actual_cost': forms.TextInput(attrs={'class': 'form-control'}),
+            'approved_by': forms.Select(attrs={'class': 'form-control'}),
+            'responsible_employee_id': forms.Select(attrs={'class': 'form-control'}),
+            'product_item_id': forms.Select(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(RepairCreateForm, self).__init__(*args, **kwargs)
+        self.fields['details'].label = "Product Details"
+        self.fields['repair_request_date'].label = "Request Date"
+        self.fields['estimated_delivery_date'].label = "Estimated Delivery Date"
+        self.fields['actual_delivery_date'].label = "Actual Delivery Date"
+        self.fields['estimated_cost'].label = "Estimated Cost"
+        self.fields['actual_cost'].label = "Actual Cost"
+        self.fields['approved_by'].label = "Approved By"
+        self.fields['responsible_employee_id'].label = "Responsible Person"
+        self.fields['product_item_id'].label = "Product Item Name"
 
 
 class RepairUpdateForm(forms.ModelForm):
@@ -244,18 +254,70 @@ class RepairUpdateForm(forms.ModelForm):
         fields = ('details', 'repair_request_date', 'estimated_delivery_date', 'actual_delivery_date', 'estimated_cost',
                   'actual_cost', 'approved_by', 'responsible_employee_id', 'product_item_id')
 
-    #     widgets = {
-    #         'p_name': forms.TextInput(attrs={'class': 'form-control'}),
-    #         'country_of_origin': forms.TextInput(attrs={'class': 'form-control'}),
-    #         'brand': forms.TextInput(attrs={'class': 'form-control'}),
-    #         'p_details': forms.TextInput(attrs={'class': 'form-control'}),
-    #         'last_modified_by': forms.HiddenInput()
-    #     }
-    #
-    # def __init__(self, *args, **kwargs):
-    #     super(ProductUpdateForm, self).__init__(*args, **kwargs)
-    #     self.fields['p_name'].label = "Product Name"
-    #     self.fields['country_of_origin'].label = "Country of Origin"
-    #     self.fields['brand'].label = "Brand"
-    #     self.fields['p_details'].label = "Details"
-    #     self.fields['last_modified_by'].value = "1"
+        widgets = {
+            'details': forms.TextInput(attrs={'class': 'form-control'}),
+            'repair_request_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'estimated_delivery_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'actual_delivery_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'estimated_cost': forms.TextInput(attrs={'class': 'form-control'}),
+            'actual_cost': forms.TextInput(attrs={'class': 'form-control'}),
+            'approved_by': forms.Select(attrs={'class': 'form-control'}),
+            'responsible_employee_id': forms.Select(attrs={'class': 'form-control'}),
+            'product_item_id': forms.Select(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(RepairUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['details'].label = "Product Details"
+        self.fields['repair_request_date'].label = "Request Date"
+        self.fields['estimated_delivery_date'].label = "Estimated Delivery Date"
+        self.fields['actual_delivery_date'].label = "Actual Delivery Date"
+        self.fields['estimated_cost'].label = "Estimated Cost"
+        self.fields['actual_cost'].label = "Actual Cost"
+        self.fields['approved_by'].label = "Approved By"
+        self.fields['responsible_employee_id'].label = "Responsible Person"
+        self.fields['product_item_id'].label = "Product Item Name"
+
+
+class ProductPropertyCreateForm(forms.ModelForm):
+    class Meta:
+        model = Property
+        fields = ('property_name', 'property_value', 'property_details', 'priority', 'product_id')
+
+        widgets = {
+            'property_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'property_value': forms.TextInput(attrs={'class': 'form-control'}),
+            'property_details': forms.TextInput(attrs={'class': 'form-control'}),
+            'priority': forms.TextInput(attrs={'class': 'form-control'}),
+            'product_id': forms.Select(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(ProductPropertyCreateForm, self).__init__(*args, **kwargs)
+        self.fields['property_name'].label = "Property Name"
+        self.fields['property_value'].label = "Property Value"
+        self.fields['property_details'].label = "Property Details"
+        self.fields['priority'].label = "Priority"
+        self.fields['product_id'].label = "Product"
+
+
+class ProductPropertyUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Property
+        fields = ('property_name', 'property_value', 'property_details', 'priority', 'product_id')
+
+        widgets = {
+            'property_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'property_value': forms.TextInput(attrs={'class': 'form-control'}),
+            'property_details': forms.TextInput(attrs={'class': 'form-control'}),
+            'priority': forms.TextInput(attrs={'class': 'form-control'}),
+            'product_id': forms.Select(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(ProductPropertyUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['property_name'].label = "Property Name"
+        self.fields['property_value'].label = "Property Value"
+        self.fields['property_details'].label = "Property Details"
+        self.fields['priority'].label = "Priority"
+        self.fields['product_id'].label = "Product"

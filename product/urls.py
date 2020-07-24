@@ -33,6 +33,11 @@ urlpatterns = [
     path('product-location/edit/<int:pk>', views.ProductLocationUpdateView.as_view(), name='product_location_update'),
     path('product-location/delete/<int:pk>', views.ProductLocationDeleteView.as_view(), name='product_location_delete'),
 
+    path('product-property-add/', views.ProductPropertyCreateView.as_view(), name='product_property_add'),
+    path("product-property-list", views.product_property_list, name="product_property_list"),
+    path('product-property/edit/<int:pk>', views.ProductPropertyUpdateView.as_view(), name='product_property_update'),
+    path('product-property/delete/<int:pk>', views.ProductPropertyDeleteView.as_view(), name='product_property_delete'),
+
 ]
 
 

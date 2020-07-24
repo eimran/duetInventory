@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BranchesTreeState">
-    <expand />
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62441bbc-77f2-4553-9c39-882a5e971512" name="Default Changelist" comment="16.07.20 (Category entry form + category list done)">
-      <change afterPath="$PROJECT_DIR$/templates/product/product/location/product_location_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/location/product_location_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/location/product_location_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/location/product_location_update.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/product_item_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/product_item_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/product_item_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/product_item_update.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/status/product_status_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/status/product_status_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/status/product_status_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/product/status/product_status_update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/property/product_property_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/property/product_property_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/property/product_property_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/property/product_property_update.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product/product/product_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/product/product_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product/product/product_item_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/product/product_item_delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product/product/product_item_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/product/product_item_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product/repair/repair_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/repair/repair_delete.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +65,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/oldprojects/Payroll Documents/payroll" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -172,6 +172,17 @@
               <option name="CUSTOM_BOOLEAN_PROPERTIES">
                 <map>
                   <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
                 </map>
               </option>
             </State>
