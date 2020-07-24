@@ -11,15 +11,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62441bbc-77f2-4553-9c39-882a5e971512" name="Default Changelist" comment="16.07.20 (Category entry form + category list done)">
-      <change afterPath="$PROJECT_DIR$/templates/product/repair/repair_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/repair/repair_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/product/repair/repair_update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/location/product_location_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/location/product_location_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/location/product_location_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/location/product_location_update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/product_item_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/product_item_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/product_item_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/product_item_update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/status/product_status_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/status/product_status_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/status/product_status_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/product/product/status/product_status_update.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/templates/demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/repair/repair_add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product/product/product_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/product/product_add.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +65,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/employee" />
+    <property name="last_opened_file_path" value="$USER_HOME$/oldprojects/Payroll Documents/payroll" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -209,11 +218,11 @@
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="172" y="127" width="1094" height="541" key="DiffContextDialog/72.27.1294.741@72.27.1294.741" timestamp="1595359261962" />
-    <state x="858" y="177" width="424" height="520" key="FileChooserDialogImpl" timestamp="1595487821335">
+    <state x="858" y="177" width="424" height="520" key="FileChooserDialogImpl" timestamp="1595592300680">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="933" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594781014254" />
-    <state x="858" y="177" width="424" height="520" key="FileChooserDialogImpl/72.27.1294.741@72.27.1294.741" timestamp="1595487821335" />
+    <state x="858" y="177" width="424" height="520" key="FileChooserDialogImpl/72.27.1294.741@72.27.1294.741" timestamp="1595592300680" />
     <state x="196" y="86" width="1035" height="629" key="MergeDialog" timestamp="1595360690988">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
