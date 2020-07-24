@@ -1,5 +1,5 @@
 from django import forms
-from .models import Category, Product
+from .models import Category, Product, Repair
 
 
 class CategoryCreateForm(forms.ModelForm):
@@ -82,3 +82,47 @@ class ProductUpdateForm(forms.ModelForm):
         self.fields['brand'].label = "Brand"
         self.fields['p_details'].label = "Details"
         self.fields['last_modified_by'].value = "1"
+
+
+class RepairCreateForm(forms.ModelForm):
+    class Meta:
+        model = Repair
+        fields = ('details', 'repair_request_date', 'estimated_delivery_date', 'actual_delivery_date', 'estimated_cost',
+                  'actual_cost', 'approved_by', 'responsible_employee_id', 'product_item_id')
+
+    #     widgets = {
+    #         'p_name': forms.TextInput(attrs={'class': 'form-control'}),
+    #         'country_of_origin': forms.TextInput(attrs={'class': 'form-control'}),
+    #         'brand': forms.TextInput(attrs={'class': 'form-control'}),
+    #         'p_details': forms.TextInput(attrs={'class': 'form-control'}),
+    #     }
+    #
+    # def __init__(self, *args, **kwargs):
+    #     super(ProductCreateForm, self).__init__(*args, **kwargs)
+    #     self.fields['p_name'].label = "Product Name"
+    #     self.fields['country_of_origin'].label = "Country of Origin"
+    #     self.fields['brand'].label = "Brand"
+    #     self.fields['p_details'].label = "Details"
+
+
+class RepairUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Repair
+        fields = ('details', 'repair_request_date', 'estimated_delivery_date', 'actual_delivery_date', 'estimated_cost',
+                  'actual_cost', 'approved_by', 'responsible_employee_id', 'product_item_id')
+
+    #     widgets = {
+    #         'p_name': forms.TextInput(attrs={'class': 'form-control'}),
+    #         'country_of_origin': forms.TextInput(attrs={'class': 'form-control'}),
+    #         'brand': forms.TextInput(attrs={'class': 'form-control'}),
+    #         'p_details': forms.TextInput(attrs={'class': 'form-control'}),
+    #         'last_modified_by': forms.HiddenInput()
+    #     }
+    #
+    # def __init__(self, *args, **kwargs):
+    #     super(ProductUpdateForm, self).__init__(*args, **kwargs)
+    #     self.fields['p_name'].label = "Product Name"
+    #     self.fields['country_of_origin'].label = "Country of Origin"
+    #     self.fields['brand'].label = "Brand"
+    #     self.fields['p_details'].label = "Details"
+    #     self.fields['last_modified_by'].value = "1"

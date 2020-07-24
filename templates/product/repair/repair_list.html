@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Repair Item List </h1>
+          <p class="mb-4">  </p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+<!--            <div class="card-header py-3">-->
+<!--              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
+<!--            </div>-->
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th>Item Details</th>
+                        <th>Repair Request Date</th>
+                        <th>Estimated Delivery</th>
+                        <th>Actual Delivery</th>
+                        <th>Estimated Cost</th>
+                        <th>Actual Cost</th>
+                        <th>Approved By</th>
+                        <th>Responsible Person</th>
+                        <th>Product ITEM ID</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {% for repair in repairs %}
+                    <tr>
+                        <td>{{ repair.id }}</td>
+                        <td>{{ repair.details }}</td>
+                        <td>{{ repair.repair_request_date }}</td>
+                        <td>{{ repair.estimated_delivery_date }}</td>
+                        <td>{{ repair.actual_delivery_date }}</td>
+                        <td>{{ repair.estimated_cost }}</td>
+                        <td>{{ repair.actual_cost }}</td>
+                        <td>{{ repair.approved_by }}</td>
+                        <td>{{ repair.responsible_employee_id }}</td>
+                        <td>{{ repair.product_item_id }}</td>
+                       <<td><small><a href="{% url 'repair_update' repair.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
+                        <td><small><a href="{% url 'repair_delete' repair.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
+
+                    </tr>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+
+{% endblock %}

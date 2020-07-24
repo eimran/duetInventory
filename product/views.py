@@ -4,8 +4,8 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, FormView
 from django.contrib import messages
 from django.conf import settings
-from .models import Category, Product
-from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm, ProductUpdateForm
+from .models import Category, Product, Repair
+from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm, ProductUpdateForm, RepairCreateForm, RepairUpdateForm
 
 
 def category_add(request):
@@ -82,6 +82,7 @@ class ProductUpdateView(UpdateView):
     form_class = ProductUpdateForm
     #fields = ['p_name', 'country_of_origin', 'brand', 'p_details']
 
+
 class ProductDeleteView(DeleteView):
     model = Product
     template_name = 'product/product/product_delete.html'
@@ -92,3 +93,43 @@ def product_list(request):
     products = Product.objects.order_by('id').all()
     context = {'products': products}
     return render(request, 'product/product/product_list.html', context)
+
+
+class RepairCreateView(CreateView):
+    template_name = 'product/repair/repair_add.html'
+    form_class = RepairCreateForm
+
+    # def get_initial(self, *args, **kwargs):
+    #     initial = super(ProductCreateView, self).get_initial(**kwargs)
+    #     initial['category_name'] = 'My Product'
+    #     return initial
+
+    def post(self, request, *args, **kwargs):
+        form = RepairCreateForm(request.POST)
+        if form.is_valid():
+            repair = form.save()
+            repair.created_by = request.user
+            repair.save()
+            # return HttpResponseRedirect(reverse_lazy('products:detail', args=[product.id]))
+            messages.info(request, 'repair item inserted')
+        # return render(request, 'product/product_list.html', {'form': form})
+        return redirect('repair_list')
+
+
+class RepairUpdateView(UpdateView):
+    model = Repair
+    template_name = 'product/repair/repair_update.html'
+    form_class = RepairUpdateForm
+    #fields = ['p_name', 'country_of_origin', 'brand', 'p_details']
+
+
+class RepairDeleteView(DeleteView):
+    model = Repair
+    template_name = 'product/repair/repair_delete.html'
+    success_url = reverse_lazy('repair_list')
+
+
+def repair_list(request):
+    repairs = Repair.objects.order_by('id').all()
+    context = {'repairs': repairs}
+    return render(request, 'product/repair/repair_list.html', context)
