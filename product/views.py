@@ -1,11 +1,13 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView, FormView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.conf import settings
-from .models import Category, Product
-from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm, ProductUpdateForm
+from .models import Category, Product, ProductItem, Repair, Status, Location
+from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm, \
+    ProductUpdateForm, RepairCreateForm, RepairUpdateForm, ProductItemCreateForm, ProductItemUpdateForm, \
+    ProductStatusCreateForm, ProductStatusUpdateForm, ProductLocationCreateForm, ProductLocationUpdateForm
 
 
 def category_add(request):
@@ -40,7 +42,7 @@ class CategoryUpdateView(UpdateView):
     model = Category
     template_name = 'product/category/category_update.html'
     form_class = CategoryUpdateForm
-    #fields = ['category_name', 'details', 'parent_id']
+    # fields = ['category_name', 'details', 'parent_id']
 
 
 class CategoryDeleteView(DeleteView):
@@ -70,17 +72,15 @@ class ProductCreateView(CreateView):
             product = form.save()
             product.created_by = request.user
             product.save()
-            # return HttpResponseRedirect(reverse_lazy('products:detail', args=[product.id]))
             messages.info(request, 'product inserted')
-        # return render(request, 'product/product_list.html', {'form': form})
-        return redirect('product_list')
+        return render(request, 'product/product_list.html', {'form': form})
 
 
 class ProductUpdateView(UpdateView):
     model = Product
     template_name = 'product/product/product_update.html'
     form_class = ProductUpdateForm
-    #fields = ['p_name', 'country_of_origin', 'brand', 'p_details']
+
 
 class ProductDeleteView(DeleteView):
     model = Product
@@ -92,3 +92,155 @@ def product_list(request):
     products = Product.objects.order_by('id').all()
     context = {'products': products}
     return render(request, 'product/product/product_list.html', context)
+
+
+class ProductItemCreateView(CreateView):
+    template_name = 'product/product/product_item_add.html'
+    form_class = ProductItemCreateForm
+
+    def post(self, request, *args, **kwargs):
+        form = ProductItemCreateForm(request.POST)
+        if form.is_valid():
+            product_item = form.save()
+            product_item.created_by = request.user
+            product_item.save()
+            messages.info(request, 'product item inserted')
+        # return render(request, 'product/product_item_list.html', {'form': form})
+        return redirect('product_item_list')
+
+
+class ProductItemUpdateView(UpdateView):
+    model = ProductItem
+    template_name = 'product/product/product_item_update.html'
+    form_class = ProductItemUpdateForm
+    success_url = reverse_lazy('product_item_list')
+
+
+class ProductItemDeleteView(DeleteView):
+    model = ProductItem
+    template_name = 'product/product/product_item_delete.html'
+    success_url = reverse_lazy('product_item_list')
+
+
+def product_item_list(request):
+    product_items = ProductItem.objects.order_by('id').all()
+    context = {'product_items': product_items}
+    return render(request, 'product/product/product_item_list.html', context)
+
+
+class RepairCreateView(CreateView):
+    template_name = 'product/repair/repair_add.html'
+    form_class = RepairCreateForm
+
+    # def get_initial(self, *args, **kwargs):
+    #     initial = super(ProductCreateView, self).get_initial(**kwargs)
+    #     initial['category_name'] = 'My Product'
+    #     return initial
+
+    def post(self, request, *args, **kwargs):
+        form = RepairCreateForm(request.POST)
+        if form.is_valid():
+            repair = form.save()
+            repair.created_by = request.user
+            repair.save()
+            # return HttpResponseRedirect(reverse_lazy('products:detail', args=[product.id]))
+            messages.info(request, 'repair item inserted')
+        # return render(request, 'product/product_list.html', {'form': form})
+        return redirect('repair_list')
+
+
+class RepairUpdateView(UpdateView):
+    model = Repair
+    template_name = 'product/repair/repair_update.html'
+    form_class = RepairUpdateForm
+    success_url = reverse_lazy('repair_list')
+
+
+class RepairDeleteView(DeleteView):
+    model = Repair
+    template_name = 'product/repair/repair_delete.html'
+    success_url = reverse_lazy('repair_list')
+
+
+def repair_list(request):
+    repairs = Repair.objects.order_by('id').all()
+    context = {'repairs': repairs}
+    return render(request, 'product/repair/repair_list.html', context)
+
+
+class ProductStatusCreateView(CreateView):
+    template_name = 'product/product/status/product_status_add.html'
+    form_class = ProductStatusCreateForm
+
+    # def get_initial(self, *args, **kwargs):
+    #     initial = super(ProductCreateView, self).get_initial(**kwargs)
+    #     initial['category_name'] = 'My Product'
+    #     return initial
+
+    def post(self, request, *args, **kwargs):
+        form = ProductStatusCreateForm(request.POST)
+        if form.is_valid():
+            status = form.save()
+            status.save()
+            # return HttpResponseRedirect(reverse_lazy('products:detail', args=[product.id]))
+            messages.info(request, 'status item inserted')
+        # return render(request, 'product/product_list.html', {'form': form})
+        return redirect('product_status_list')
+
+
+class ProductStatusUpdateView(UpdateView):
+    model = Status
+    template_name = 'product/product/status/product_status_update.html'
+    form_class = ProductStatusUpdateForm
+    success_url = reverse_lazy('product_status_list')
+
+
+class ProductStatusDeleteView(DeleteView):
+    model = Status
+    template_name = 'product/product/status/product_status_delete.html'
+    success_url = reverse_lazy('product_status_list')
+
+
+def product_status_list(request):
+    statuss = Status.objects.order_by('id').all()
+    context = {'statuss': statuss}
+    return render(request, 'product/product/status/product_status_list.html', context)
+
+
+class ProductLocationCreateView(CreateView):
+    template_name = 'product/product/location/product_location_add.html'
+    form_class = ProductLocationCreateForm
+
+    # def get_initial(self, *args, **kwargs):
+    #     initial = super(ProductCreateView, self).get_initial(**kwargs)
+    #     initial['category_name'] = 'My Product'
+    #     return initial
+
+    def post(self, request, *args, **kwargs):
+        form = ProductLocationCreateForm(request.POST)
+        if form.is_valid():
+            location = form.save()
+            location.save()
+            # return HttpResponseRedirect(reverse_lazy('products:detail', args=[product.id]))
+            messages.info(request, 'Location item inserted')
+        # return render(request, 'product/product_list.html', {'form': form})
+        return redirect('product_location_list')
+
+
+class ProductLocationUpdateView(UpdateView):
+    model = Location
+    template_name = 'product/product/location/product_location_update.html'
+    form_class = ProductLocationUpdateForm
+    success_url = reverse_lazy('product_location_list')
+
+
+class ProductLocationDeleteView(DeleteView):
+    model = Location
+    template_name = 'product/product/location/product_location_delete.html'
+    success_url = reverse_lazy('product_location_list')
+
+
+def product_location_list(request):
+    locations = Location.objects.order_by('id').all()
+    context = {'locations': locations}
+    return render(request, 'product/product/location/product_location_list.html', context)
