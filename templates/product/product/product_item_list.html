@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Product Item Listing </h1>
+          <p class="mb-4">  </p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+<!--            <div class="card-header py-3">-->
+<!--              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
+<!--            </div>-->
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Item Name</th>
+                        <th>QR Code</th>
+                        <th>Actual Cost</th>
+                        <th>Purchase Date</th>
+                        <th>Responsible Person</th>
+                        <th>Department</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {% for productitem in product_items %}
+                    <tr>
+                        <td>{{ productitem.id }}</td>
+                        <td>{{ productitem.p_item_name }}</td>
+                        <td>{{ productitem.qr_code_key }}</td>
+                        <td>{{ productitem.actual_cost }}</td>
+                        <td>{{ productitem.purchase_date }}</td>
+                        <td>{{ productitem.responsible_employee_id }}</td>
+                        <td>{{ productitem.dept_id }}</td>
+                        <td>{{ productitem.location_id }}</td>
+                        <td>{{ productitem.status_id }}</td>
+
+                        <td><small><a href="{% url 'product_item_update' productitem.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
+                        <td><small><a href="{% url 'product_item_delete' productitem.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
+
+                    </tr>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+
+{% endblock %}

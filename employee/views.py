@@ -12,7 +12,7 @@ def index(request):
 
 
 class EmployeeCreateView(CreateView):
-    template_name = 'product/product/product_add.html'
+    template_name = 'employee/employee_add.html'
     form_class = EmployeeCreateForm
 
     def post(self, request, *args, **kwargs):

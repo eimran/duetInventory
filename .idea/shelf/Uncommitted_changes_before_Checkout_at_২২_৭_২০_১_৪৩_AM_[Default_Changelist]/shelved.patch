@@ -1,0 +1,18 @@
+Index: accounts/urls.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.urls import path\r\nfrom . import views\r\nfrom django.contrib.auth import views as auth_views\r\nfrom django.conf.urls import url\r\n\r\n\r\nurlpatterns = [\r\n    # path('user-register/', views.user_register, name=\"user_register\"),\r\n    path('user-register/', views.registration_view, name=\"user_register\"),\r\n    path(\"login/\", views.login_view, name=\"login\"),\r\n    path(\"account/\", views.account_view, name=\"account\"),\r\n    path(\"dashboard\", views.dashboard, name=\"dashboard\"),\r\n    path(\"logout\", views.logout_view, name=\"logout\"),\r\n    # path(\"password_reset\", views.password_reset, name=\"password_reset\"),\r\n\r\n# Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)\r\n    path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='accounts/registration/password_change_done.html'),\r\n        name='password_change_done'),\r\n\r\n    path('password_change/', auth_views.PasswordChangeView.as_view(template_name='accounts/registration/password_change.html'),\r\n        name='password_change'),\r\n\r\n    path('password_reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='accounts/registration/password_reset_done.html'),\r\n     name='password_reset_done'),\r\n\r\n    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),\r\n    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),\r\n    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='accounts/registration/password_reset_complete.html'),\r\n     name='password_reset_complete'),\r\n]
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- accounts/urls.py	(revision e0ea939d36b46683aba6eba09400f4fc0648bc34)
++++ accounts/urls.py	(date 1595360491131)
+@@ -2,7 +2,7 @@
+ from . import views
+ from django.contrib.auth import views as auth_views
+ from django.conf.urls import url
+-
++#Hello
+ 
+ urlpatterns = [
+     # path('user-register/', views.user_register, name="user_register"),

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--{% load crispy_forms_tags %}-->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Delete Product!!</h1>
+  <p class="mb-4">  </p>
+
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="row">
+
+            <div class="col-sm-3 col-md-3 col-lg-3"></div>
+
+            <div class="col-sm-6 col-md-6 col-lg-6">
+
+                <p> Name: <i> {{ productitem.p_item_name }} </i><br/>
+                    QR Code: <i> {{ productitem.qr_code_key }} </i><br/>
+                    Purchase Date: <i> {{ productitem.purchase_date }} </i><br/>
+                    Expire Date: <i> {{ productitem.expiry_date }} </i><br/>
+                    Responsible Person: <i> {{ productitem.responsible_employee_id }} </i><br/>
+                    Department: <i> {{ productitem.dept_id }} </i><br/>
+                    Location: <i> {{ productitem.location_id }} </i><br/>
+                    Status: <i> {{ productitem.status_id }} </i><br/>
+                </p>
+
+                <form action="" method="POST">
+
+                {% csrf_token %}
+                <strong>Are you sure want to delete?</strong><br/><br/>
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                </form>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3"></div>
+
+        </div>
+        </div>
+      </div>
+</div>
+
+{% endblock %}
+
