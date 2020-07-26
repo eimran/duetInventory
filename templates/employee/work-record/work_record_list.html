@@ -1,10 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Work Record List</h1>
+          <p class="mb-4">  </p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th>Employee</th>
+                        <th>Designation</th>
+                        <th>Role</th>
+                        <th>Assign Date</th>
+                        <th>Release Date</th>
+                        <th>Additional</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {% for work_record in work_records %}
+                    <tr>
+                        <td>{{ work_record.id }}</td>
+                        <td>{{ work_record.employee }}</td>
+                        <td>{{ work_record.designation.name }}</td>
+                        <td>{{ work_record.role_name }}</td>
+                        <td>{{ work_record.from_date }}</td>
+                        <td>{{ work_record.to_date }}</td>
+                        <td>{{ work_record.is_additional }}</td>
+                        <td>{{ work_record.description }}</td>
+
+                        <td><small><a href="{% url 'work_record_update' work_record.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
+                        <td><small><a href="{% url 'work_record_delete' work_record.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
+
+                    </tr>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+
+{% endblock %}
