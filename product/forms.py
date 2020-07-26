@@ -1,5 +1,5 @@
 from django import forms
-from .models import Category, Product, ProductItem, Repair, Status, Location, Property
+from .models import *
 
 
 class CategoryCreateForm(forms.ModelForm):
@@ -86,6 +86,38 @@ class ProductUpdateForm(forms.ModelForm):
         self.fields['p_details'].label = "Details"
         self.fields['last_modified_by'].value = "1"
         self.fields['image'].value = "Update Image"
+
+
+class ProductCategoryCreateForm(forms.ModelForm):
+    class Meta:
+        model = ProductCategory
+        fields = ('product_id', 'category_id')
+
+        widgets = {
+            'product_id': forms.Select(attrs={'class': 'form-control'}),
+            'category_id': forms.Select(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(ProductCategoryCreateForm, self).__init__(*args, **kwargs)
+        self.fields['product_id'].label = "Product Name"
+        self.fields['category_id'].label = "Category Name"
+
+
+class ProductCategoryUpdateForm(forms.ModelForm):
+    class Meta:
+        model = ProductCategory
+        fields = ('product_id', 'category_id')
+
+        widgets = {
+            'product_id': forms.Select(attrs={'class': 'form-control'}),
+            'category_id': forms.Select(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(ProductCategoryUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['product_id'].label = "Product Name"
+        self.fields['category_id'].label = "Category Name"
 
 
 class ProductItemCreateForm(forms.ModelForm):

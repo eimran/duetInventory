@@ -4,3 +4,5 @@ django-bootstrap4
 django-braces
 django-dirtyfields
 Pillow
+django-filter
+

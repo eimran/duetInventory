@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Category wise product listing </h1>
+    <p class="mb-4">  </p>
+    <div class="row">
+        <div class = "col">
+            <div class ="card card-body">
+                <form method="get">
+                    {{product_category_filter.form}}
+                    <button class ="btn btn-primary" type="submit"> Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product ID</th>
+                <th>Category ID</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for pcat in pcats %}
+            <tr>
+                <td>{{ pcat.id }}</td>
+                <td>{{ pcat.product_id }}</td>
+                <td>{{ pcat.category_id }}</td>
+
+               <<td><small><a href="{% url 'product_category_update' pcat.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
+                <td><small><a href="{% url 'product_category_delete' pcat.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
+
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+
+</div>
+
+{% endblock %}

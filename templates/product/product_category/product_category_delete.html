@@ -5,7 +5,7 @@
 <!--{% load crispy_forms_tags %}-->
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Delete Product!!</h1>
+  <h1 class="h3 mb-2 text-gray-800">Delete Categories Product!!</h1>
   <p class="mb-4">  </p>
 
       <!-- DataTales Example -->
@@ -17,16 +17,13 @@
 
             <div class="col-sm-6 col-md-6 col-lg-6">
 
-                <p> Product Name: <i> {{ product.p_name }} </i><br/>
-                    Country of Origin: <i> {{ product.country_of_origin }} </i><br/>
-                    Brand: <i> {{ product.brand }}</i> <br/></p>
+                <p> Product Name: <i> {{ pcat.product_id }} </i><br/>
+                    Category Name: <i> {{ pcat.category_id }} </i><br/>
                 <form action="" method="POST">
 
                 {% csrf_token %}
                 <strong>Are you sure want to delete?</strong><br/><br/>
-                    <small><button type="submit" class="btn btn-sm btn-danger">Delete</button></small>
-                    <small><a href="{% url 'product_list' %}" class="btn btn-sm btn-info">Cancel</a></small>
-
+                    <button type="submit" class="btn btn-primary">Delete</button>
                 </form>
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3"></div>

@@ -92,20 +92,56 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Category: </h6>
-            <a class="collapse-item" href="{% url 'category_add' %}">Add Category</a>
-            <a class="collapse-item" href="{% url 'category_list' %}">Category List</a>
-            <div class="collapse-divider"></div>
+
             <h6 class="collapse-header">Product:</h6>
             <a class="collapse-item" href="{% url 'product_add' %}">Add Product</a>
             <a class="collapse-item" href="{% url 'product_list' %}">Product List</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Property:</h6>
             <a class="collapse-item" href="{% url 'product_property_add' %}">Add Product Property</a>
             <a class="collapse-item" href="{% url 'product_property_list' %}">Product Property List</a>
 
+            <div class="collapse-divider"></div>
             <h6 class="collapse-header">Product Item:</h6>
             <a class="collapse-item" href="{% url 'product_item_add' %}">Add Product Item</a>
             <a class="collapse-item" href="{% url 'product_item_list' %}">Product Item List</a>
 
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Repair:</h6>
+            <a class="collapse-item" href="{% url 'repair_add' %}">Add Repair</a>
+            <a class="collapse-item" href="{% url 'repair_list' %}">Repair List</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3" aria-expanded="true" aria-controls="collapsePages3">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Category</span>
+        </a>
+        <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Category: </h6>
+            <a class="collapse-item" href="{% url 'category_add' %}">Add Category</a>
+            <a class="collapse-item" href="{% url 'category_list' %}">Category List</a>
+            <div class="collapse-divider"></div>
+
+            <h6 class="collapse-header">Category wise product : </h6>
+            <a class="collapse-item" href="{% url 'product_category_add' %}">Add </a>
+            <a class="collapse-item" href="{% url 'product_category_list' %}">List</a>
+            <div class="collapse-divider"></div>
+
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages4" aria-expanded="true" aria-controls="collapsePages4">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Product Miscellaneous</span>
+        </a>
+        <div id="collapsePages4" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Product Status Table:</h6>
             <a class="collapse-item" href="{% url 'product_status_add' %}">Add Product Status</a>
@@ -116,13 +152,15 @@
             <a class="collapse-item" href="{% url 'product_location_add' %}">Add Product Location</a>
             <a class="collapse-item" href="{% url 'product_location_list' %}">Product Status Location</a>
 
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Repair:</h6>
-            <a class="collapse-item" href="{% url 'repair_add' %}">Add Repair</a>
-            <a class="collapse-item" href="{% url 'repair_list' %}">Repair List</a>
+
           </div>
         </div>
       </li>
+
+
+
+
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
