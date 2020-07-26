@@ -17,28 +17,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="285badbe-6f84-40ba-99d7-6676e82f4a77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/employee/migrations/0004_mylog_workrecord.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/employee/migrations/0005_auto_20200725_2143.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/employee/signals.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/employee/work-record/work_record_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/employee/work-record/work_record_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/employee/work-record/work_record_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/employee/work-record/work_record_update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at______AM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at______AM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at______AM__Default_Changelist_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at______AM__Default_Changelist_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/migrations/0002_auto_20200723_2354.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
