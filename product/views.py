@@ -68,19 +68,20 @@ class ProductCreateView(CreateView):
     #     return initial
 
     def post(self, request, *args, **kwargs):
-        form = ProductCreateForm(request.POST)
+        form = ProductCreateForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
             product.created_by = request.user
             product.save()
             messages.info(request, 'product inserted')
-        return render(request, 'product/product_list.html', {'form': form})
+        return redirect('product_list')
 
 
 class ProductUpdateView(UpdateView):
     model = Product
     template_name = 'product/product/product_update.html'
     form_class = ProductUpdateForm
+    success_url = reverse_lazy('product_list')
 
 
 class ProductDeleteView(DeleteView):

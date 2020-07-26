@@ -24,6 +24,7 @@
                         <th>Email</th>
                         <th>Address</th>
                         <th>Gender</th>
+                        <th>Image</th>
                         <th>Update</th>
                         <th>Delete</th>
                     </tr>
@@ -38,6 +39,12 @@
                         <td>{{ employee.email }}</td>
                         <td>{{ employee.address }}</td>
                         <td>{{ employee.gender }}</td>
+                        {% if employee.image %}
+                            <td><img src="/media/{{ employee.image }}" width='200' height='200'>   </td>
+                        {% else %}
+                            <td>No photos</td>
+                        {% endif %}
+
                         <td><small><a href="{% url 'update_employee' employee.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
                         <td><small><a href="{% url 'employee_delete' employee.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
 

@@ -7,6 +7,12 @@ urlpatterns = [
     path('employee/delete/<int:pk>', views.EmployeeDeleteView.as_view(), name='employee_delete'),
     path("employee-list", views.employee_list, name="employee_list"),
     path('employee/edit/<int:pk>', views.EmployeeUpdateView.as_view(), name='update_employee'),
+    # path('employee/edit/<int:pk>', views.employee_update_view, name='update_employee'),
+
+    path('work-record-add/', views.WorkRecordCreateView.as_view(), name='work_record_add'),
+    path('work-record/delete/<int:pk>', views.WorkRecordDeleteView.as_view(), name='work_record_delete'),
+    path("work-record-list", views.work_record_list, name="work_record_list"),
+    path('work-record/edit/<int:pk>', views.WorkRecordUpdateView.as_view(), name='work_record_update'),
 
     path('dept-add/', views.DeptCreateView.as_view(), name='dept_add'),
     path('dept/delete/<int:pk>', views.DeptDeleteView.as_view(), name='dept_delete'),

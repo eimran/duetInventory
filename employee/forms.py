@@ -1,11 +1,12 @@
 from django import forms
-from .models import Employee, Department, Faculty
+from .models import Employee, Department, Faculty, WorkRecord
 
 
 class EmployeeCreateForm(forms.ModelForm):
     class Meta:
         model = Employee
-        fields = ('first_name', 'last_name', 'cell_no', 'email', 'address', 'gender', 'dob', 'employee_no', 'joining_date', 'category')
+        fields = ('first_name', 'last_name', 'cell_no', 'email', 'address', 'gender', 'dob', 'employee_no',
+                  'joining_date', 'category', 'image')
 
     #     widgets = {
     #         'p_name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -25,7 +26,8 @@ class EmployeeCreateForm(forms.ModelForm):
 class EmployeeUpdateForm(forms.ModelForm):
     class Meta:
         model = Employee
-        fields = ('first_name', 'last_name', 'cell_no', 'email', 'address', 'gender', 'dob', 'joining_date')
+        fields = ('first_name', 'last_name', 'cell_no', 'email', 'address', 'gender', 'dob', 'employee_no',
+                  'joining_date', 'category', 'image')
 
         # widgets = {
         #     'p_name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -63,3 +65,13 @@ class FacultyUpdateForm(forms.ModelForm):
         fields = ('name', 'code', 'acronym', 'description', 'type')
 
 
+class WorkRecordCreateForm(forms.ModelForm):
+    class Meta:
+        model = WorkRecord
+        fields = ('employee', 'designation', 'role_name', 'from_date', 'to_date', 'is_additional', 'description')
+
+
+class WorkRecordUpdateForm(forms.ModelForm):
+    class Meta:
+        model = WorkRecord
+        fields = ('employee', 'designation', 'role_name', 'from_date', 'to_date', 'is_additional', 'description')

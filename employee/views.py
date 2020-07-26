@@ -2,9 +2,16 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
-from .models import Employee, Department, Faculty
-from .forms import EmployeeUpdateForm, EmployeeCreateForm, DeptCreateForm, DeptUpdateForm, FacultyCreateForm, FacultyUpdateForm
+from .models import Employee, Department, Faculty, MyLog, WorkRecord
+from .forms import EmployeeUpdateForm, EmployeeCreateForm, DeptCreateForm, DeptUpdateForm, FacultyCreateForm, \
+    FacultyUpdateForm, WorkRecordCreateForm, WorkRecordUpdateForm
 from django.views.generic import CreateView, UpdateView, DeleteView, FormView
+from braces.views import LoginRequiredMixin
+from datetime import datetime
+
+from django.shortcuts import (get_object_or_404,
+                              render,
+                              HttpResponseRedirect)
 
 
 def index(request):
@@ -16,16 +23,14 @@ class EmployeeCreateView(CreateView):
     form_class = EmployeeCreateForm
 
     def post(self, request, *args, **kwargs):
-        form = EmployeeCreateForm(request.POST)
+        form = EmployeeCreateForm(request.POST, request.FILES)
         if form.is_valid():
             employee = form.save()
             employee.created_by = request.user
             employee.active_status = 1
             employee.category = 't'
             employee.save()
-            # return HttpResponseRedirect(reverse_lazy('products:detail', args=[product.id]))
             messages.info(request, 'Employee Added')
-        # return render(request, 'employee/employee_list.html', {'form': form})
         return redirect('employee_list')
 
 
@@ -41,11 +46,46 @@ def employee_list(request):
     return render(request, 'employee/employee_list.html', context)
 
 
-class EmployeeUpdateView(UpdateView):
+class EmployeeUpdateView(UpdateView, LoginRequiredMixin):
     model = Employee
     template_name = 'employee/employee_update.html'
     form_class = EmployeeUpdateForm
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('employee_list')
+
+    # def post(self, request, *args, **kwargs):
+    #     form = EmployeeUpdateForm(request.POST)
+    #     if form.is_valid():
+    #         employee = form.save()
+    #         employee.last_modified_by = request.user
+    #         employee.save()
+    #
+    #         log_data = MyLog.objects.last()
+    #         log_data.user_id = request.user
+    #         log_data.action = 'Update'
+    #         # log_data.timestamp = datetime.now
+    #         log_data.save()
+    #     return redirect('employee_list')
+
+
+# def employee_update_view(request, pk):
+#     context = {}
+#     obj = get_object_or_404(Employee, id=pk)
+#     form = EmployeeUpdateForm(request.POST or None, instance=obj)
+#
+#     if form.is_valid():
+#         form.save()
+#         log_data = MyLog.objects.last()
+#         log_data.user_id = request.user
+#         log_data.action = 'Update'
+#         # log_data.timestamp = datetime.now
+#         log_data.save()
+#
+#         return redirect('employee_list')
+#
+#     context["form"] = form
+#
+#     return render(request, "employee/employee_update.html", context)
+
 
 
 class DeptCreateView(CreateView):
@@ -116,3 +156,38 @@ def faculty_list(request):
     faculties = Faculty.objects.order_by('id').all()
     context = {'faculties': faculties}
     return render(request, 'employee/faculty/faculty_list.html', context)
+
+
+class WorkRecordCreateView(CreateView):
+    template_name = 'employee/work-record/work_record_add.html'
+    form_class = WorkRecordCreateForm
+
+    def post(self, request, *args, **kwargs):
+        form = WorkRecordCreateForm(request.POST)
+        if form.is_valid():
+            work_record = form.save()
+            work_record.created_by = request.user
+            work_record.save()
+            messages.info(request, 'Work Record Added')
+        return redirect('work_record_list')
+
+
+
+class WorkRecordUpdateView(UpdateView):
+    model = WorkRecord
+    template_name = 'employee/work-record/work_record_update.html'
+    form_class = WorkRecordUpdateForm
+    success_url = reverse_lazy('work_record_list')
+
+
+class WorkRecordDeleteView(DeleteView):
+    model = WorkRecord
+    template_name = 'employee/work-record/work_record_delete.html'
+    success_url = reverse_lazy('work_record_list')
+
+
+def work_record_list(request):
+    work_records = WorkRecord.objects.order_by('id').all()
+    context = {'work_records': work_records}
+    return render(request, 'employee/work-record/work_record_list.html', context)
+

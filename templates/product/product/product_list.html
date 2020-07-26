@@ -11,9 +11,6 @@
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-<!--            <div class="card-header py-3">-->
-<!--              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
-<!--            </div>-->
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -26,6 +23,7 @@
                         <th>Product Details</th>
                         <th>Created At</th>
                         <th>Created By</th>
+                        <th>Image</th>
                         <th>Update</th>
                         <th>Delete</th>
                     </tr>
@@ -40,7 +38,13 @@
                         <td>{{ product.brand }}</td>
                         <td>{{ product.p_details }}</td>
                         <td>{{ product.created_at }}</td>
-                        <td>{{ product.created_by }}</td>
+
+                        {% if product.image %}
+                            <td><img src="/media/{{ product.image }}" width='200' height='200'>   </td>
+                        {% else %}
+                            <td>No photos</td>
+                        {% endif %}
+
                        <<td><small><a href="{% url 'product_update' product.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
                         <td><small><a href="{% url 'product_delete' product.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
 

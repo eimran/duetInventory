@@ -33,6 +33,7 @@ class Product(models.Model):
     country_of_origin = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
     p_details = models.CharField(max_length=1000)
+    image = models.ImageField(upload_to='product_images/', null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Created At")
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL,
@@ -105,7 +106,6 @@ class ProductItem(models.Model):
     p_item_name = models.CharField(max_length=100)
 
     qr_code_key = models.CharField(max_length=5000)
-
     actual_cost = models.FloatField()
     depreciation = models.FloatField()
     purchase_date = models.DateField(verbose_name='Purchase Date')
@@ -156,3 +156,24 @@ class Repair(models.Model):
 
     def __str__(self):
         return self.product_item_id.p_item_name + "(" + self.approved_by.dept_id + ")"
+
+
+class PersonalLoan(models.Model):
+    loan_date = models.DateField(verbose_name='Loan Date')
+    loan_payoff_date = models.DateField(verbose_name='Loan Pay-off Date Date')
+    details = models.CharField(max_length=5000)
+    loan_from = models.ForeignKey(Employee, verbose_name='Loan Given by', on_delete=models.PROTECT,
+                                  related_name='loan_given_by')
+    loan_to = models.ForeignKey(Employee, verbose_name='Loan Given to', on_delete=models.PROTECT,
+                                related_name='loan_given_to')
+    loan_item = models.ForeignKey(ProductItem, verbose_name='Loan Item', on_delete=models.PROTECT)
+
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name="Created At")
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL,
+                                   related_name='personal_loan_created_by')
+    last_modified_at = models.DateTimeField(auto_now=True, verbose_name="Modified At")
+    last_modified_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL,
+                                         related_name='personal_loan_modified_by')
+
+    def __str__(self):
+        return self.loan_item.p_item_name + "(" + self.loan_from.first_name + "-> )" + self.loan_to.first_name + ")"
