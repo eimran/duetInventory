@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--{% load crispy_forms_tags %}-->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Delete Work Record!!</h1>
+  <p class="mb-4">  </p>
+
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="row">
+
+                <ul>
+                    <li> Role Name:  {{ work_record.role_name }}</li>
+<!--                    <li> Code: { department.code }}</li>-->
+<!--                    <li> Faculty:{{ department.faculty }}</li>-->
+                </ul>
+            </div>
+            <div class="row">
+                 <form action="" method="POST">
+                    {% csrf_token %}
+                    <strong>Are you sure want to delete?</strong><br/><br/>
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                </form>
+            </div>
+        </div>
+      </div>
+</div>
+
+{% endblock %}
