@@ -17,7 +17,7 @@ class ProductPropertyFilter(django_filters.FilterSet):
 class ProductItemFilter(django_filters.FilterSet):
     class Meta:
         model = ProductItem
-        fields = ('p_item_name', 'qr_code_key', 'purchase_date', 'expiry_date',
+        fields = ('p_item_name', 'qr_code_key', 'product_id', 'purchase_date', 'expiry_date',
                   'responsible_employee_id', 'dept_id', 'location_id', 'status_id')
 
 

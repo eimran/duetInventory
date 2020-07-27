@@ -2,6 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from product.models import *
+from employee.models import *
+from product.forms import *
+from employee.forms import *
+from product.filters import *
+from employee.filters import *
 
 from accounts.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
 from employee.models import Employee
@@ -11,7 +17,6 @@ from employee.models import Employee
 #     return render(request, 'home.html', {})
 
 def registration_view(request):
-
     context = {}
     if request.POST:
         form = RegistrationForm(request.POST)
@@ -94,4 +99,13 @@ def account_view(request):
 
 
 def dashboard(request):
-    return render(request, 'employee/employee_dashboard.html', {})
+    product_items = ProductItem.objects.order_by('id').all()
+    product_category_items = ProductCategory.objects.order_by('id').all()
+
+    product_item_filter = ProductItemFilter(request.GET, queryset=product_items)
+    product_items = product_item_filter.qs
+
+    context = {'product_items': product_items, 'product_category_items': product_category_items,
+               'product_item_filter': product_item_filter}
+
+    return render(request, 'employee/employee_dashboard.html', context)

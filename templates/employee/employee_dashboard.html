@@ -2,28 +2,84 @@
 
 {% block content %}
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Welcome {{user.employee.first_name}} {{user.employee.last_name}}!</h1>
-          <p class="mb-4">  </p>
+<div class="container-fluid">
 
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-<!--            <div class="card-header py-3">-->
-<!--              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
-<!--            </div>-->
-            <div class="card-body">
-              <div class="table-responsive">
+<!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Welcome {{user.employee.first_name}} {{user.employee.last_name}}!</h1>
+    <p class="mb-4">  </p>
 
-              </div>
+    <div class="row">
+        <div class = "col">
+            <div class ="card card-body form-group" >
+                <form method="get">
+                    {{ product_item_filter.form }}
+                    <br><br>
+                    <button class="btn btn-sm btn-info" type="submit"> Search</button>
+                    <a href="{%  url 'dashboard' %}" class="btn btn-sm btn-info">Clear</a>
+                </form>
             </div>
-          </div>
-
         </div>
-        <!-- /.container-fluid -->
+    </div>
+    <br>
+    <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+      <font face="Times New Roman " size="2">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+          <small>
+            <tr>
+                <th> SL </th>
+                <th>Item Name</th>
+                <th>Product Name</th>
+                <th >Category ID</th>
+                <th>QR Code</th>
+                <th>Actual Cost</th>
+                <th>Purchase Date</th>
+                <th>Responsible Person</th>
+                <th>Department</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+          </small>
+          </thead>
+          <tbody>
 
-      <!-- End of Main Content -->
+            {% for productitem in product_items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ productitem.p_item_name }}</td>
+                <td>{{ productitem.product_id }}</td>
 
+                {% for product_category_item in product_category_items %}
+                    {% if product_category_item.product_id == productitem.product_id %}
+                        <td>{{ product_category_item.category_id}}</td>
+                    {% endif %}
+                {% endfor %}
+
+                <td>{{ productitem.qr_code_key }}</td>
+                <td>{{ productitem.actual_cost }}</td>
+                <td>{{ productitem.purchase_date }}</td>
+                <td>{{ productitem.responsible_employee_id }}</td>
+                <td>{{ productitem.dept_id }}</td>
+                <td>{{ productitem.location_id }}</td>
+                <td>{{ productitem.status_id }}</td>
+
+                <td><a href="{% url 'product_item_update' productitem.pk %}" class="btn btn-sm btn-info"><small>Edit</small></a></td>
+                <td><a href="{% url 'product_item_delete' productitem.pk %}" class="btn btn-sm btn-danger"><small>Delete</small></a></td>
+
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </font>
+      </div>
+    </div>
+    </div>
+
+    </div>
 {% endblock %}

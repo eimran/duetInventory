@@ -74,26 +74,23 @@ class ProductCreateView(CreateView):
 
 def product_add(request, category_id):
     if request.method == 'POST':
+        form = ProductCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            product.created_by = request.user
+            current_user = request.user
+            product.save()
 
-        p_name = request.POST.get('p_name', '')
-        country_of_origin = request.POST.get('country_of_origin', '')
-        brand = request.POST.get('brand', '')
-        p_details = request.POST.get('p_details', '')
+            category_obj = Category.objects.get(pk=category_id)
 
-        current_user = request.user
+            product_category_obj = ProductCategory(product_id=product, category_id=category_obj,
+                                                   created_by=current_user)
+            product_category_obj.save()
 
-        product_obj = Product(p_name=p_name, country_of_origin=country_of_origin, brand=brand,
-                                p_details=p_details, created_by=current_user)
-        product_obj.save()
+            products = Product.objects.order_by('id').all()
+            context = {'products': products}
 
-        category_obj = Category.objects.get(pk= category_id)
-        product_category_obj = ProductCategory(product_id= product_obj, category_id= category_obj, created_by= current_user)
-        product_category_obj.save()
-
-        products = Product.objects.order_by('id').all()
-        context = {'products': products}
-
-        return render(request, 'product/product/product_list.html', context)
+            return render(request, 'product/product/product_list.html', context)
 
     else:
         context = {}

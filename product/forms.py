@@ -1,12 +1,11 @@
 from django import forms
 from .models import *
 
-
 class CategoryCreateForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ('category_name', 'details', 'parent_id')
 
+        fields = ('category_name', 'details', 'parent_id')
         widgets = {
             'category_name': forms.TextInput(
                 attrs={'class': 'form-control form-control-user'}),
@@ -131,8 +130,8 @@ class ProductItemCreateForm(forms.ModelForm):
             'qr_code_key': forms.TextInput(attrs={'class': 'form-control'}),
             'actual_cost': forms.TextInput(attrs={'class': 'form-control'}),
             'depreciation': forms.TextInput(attrs={'class': 'form-control'}),
-            'purchase_date': forms.TextInput(attrs={'class': 'form-control'}),
-            'expiry_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'purchase_date': forms.DateInput(attrs={'class': 'datepicker form-control'}),
+            'expiry_date': forms.DateInput(attrs={'class': 'datepicker form-control'}),
             'responsible_employee_id': forms.Select(attrs={'class': 'form-control'}),
             'dept_id': forms.Select(attrs={'class': 'form-control'}),
             'product_id': forms.Select(attrs={'class': 'form-control'}),
@@ -167,8 +166,8 @@ class ProductItemUpdateForm(forms.ModelForm):
             'qr_code_key': forms.TextInput(attrs={'class': 'form-control'}),
             'actual_cost': forms.TextInput(attrs={'class': 'form-control'}),
             'depreciation': forms.TextInput(attrs={'class': 'form-control'}),
-            'purchase_date': forms.TextInput(attrs={'class': 'form-control'}),
-            'expiry_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'purchase_date': forms.DateInput(attrs={'class': 'datepicker form-control'}),
+            'expiry_date': forms.DateInput(attrs={'class': 'datepicker form-control'}),
             'responsible_employee_id': forms.Select(attrs={'class': 'form-control'}),
             'dept_id': forms.Select(attrs={'class': 'form-control'}),
             'product_id': forms.Select(attrs={'class': 'form-control'}),
@@ -256,14 +255,15 @@ class ProductLocationUpdateForm(forms.ModelForm):
 class RepairCreateForm(forms.ModelForm):
     class Meta:
         model = Repair
+
         fields = ('details', 'repair_request_date', 'estimated_delivery_date', 'actual_delivery_date', 'estimated_cost',
                   'actual_cost', 'approved_by', 'responsible_employee_id', 'product_item_id')
 
         widgets = {
             'details': forms.TextInput(attrs={'class': 'form-control'}),
-            'repair_request_date': forms.TextInput(attrs={'class': 'form-control'}),
-            'estimated_delivery_date': forms.TextInput(attrs={'class': 'form-control'}),
-            'actual_delivery_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'repair_request_date': forms.DateInput(attrs={'class': 'datepicker form-control'}),
+            'estimated_delivery_date': forms.DateInput(attrs={'class': 'datepicker form-control'}),
+            'actual_delivery_date': forms.DateInput(attrs={'class': 'datepicker form-control'}),
             'estimated_cost': forms.TextInput(attrs={'class': 'form-control'}),
             'actual_cost': forms.TextInput(attrs={'class': 'form-control'}),
             'approved_by': forms.Select(attrs={'class': 'form-control'}),
@@ -292,9 +292,9 @@ class RepairUpdateForm(forms.ModelForm):
 
         widgets = {
             'details': forms.TextInput(attrs={'class': 'form-control'}),
-            'repair_request_date': forms.TextInput(attrs={'class': 'form-control'}),
-            'estimated_delivery_date': forms.TextInput(attrs={'class': 'form-control'}),
-            'actual_delivery_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'repair_request_date': forms.DateInput(attrs={'class': 'datepicker form-control'}),
+            'estimated_delivery_date': forms.DateInput(attrs={'class': 'datepicker form-control'}),
+            'actual_delivery_date': forms.DateInput(attrs={'class': 'datepicker form-control'}),
             'estimated_cost': forms.TextInput(attrs={'class': 'form-control'}),
             'actual_cost': forms.TextInput(attrs={'class': 'form-control'}),
             'approved_by': forms.Select(attrs={'class': 'form-control'}),
