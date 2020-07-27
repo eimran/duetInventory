@@ -6,13 +6,24 @@
 <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Product Property Listing </h1>
-          <p class="mb-4">  </p>
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-body">
-              <div class="table-responsive">
+      <h1 class="h3 mb-2 text-gray-800">Product Property Listing </h1>
+      <p class="mb-4">  </p>
+        <div class="row">
+            <div class = "col">
+                <div class ="card card-body">
+                    <form method="get">
+                        {{property_filter.form}}
+                        <button class="btn btn-sm btn-info" type="submit"> Search</button>
+                        <a href="{%  url 'product_property_list' %}" class="btn btn-sm btn-info">Clear</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+      <!-- DataTales Example -->
+      <div class="card shadow mb-4">
+        <div class="card-body">
+          <div class="table-responsive">
+              <font face="Times New Roman " size="2">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -34,15 +45,16 @@
                         <td>{{ property.property_value }}</td>
                         <td>{{ property.property_details }}</td>
                         <td>{{ property.product_id }}</td>
-                        <td><small><a href="{% url 'product_property_update' property.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
-                        <td><small><a href="{% url 'product_property_delete' property.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
+
+                        <td><a href="{% url 'product_property_update' property.pk %}" class="btn btn-sm btn-info"><small>Edit</small></a></td>
+                        <td><a href="{% url 'product_property_update' property.pk %}" class="btn btn-sm btn-danger"><small>Delete</small></a></td>
                     </tr>
                     {% endfor %}
                   </tbody>
                 </table>
-              </div>
-            </div>
+              </font>
           </div>
         </div>
       </div>
+</div>
 {% endblock %}

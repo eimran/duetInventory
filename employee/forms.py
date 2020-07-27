@@ -1,5 +1,5 @@
 from django import forms
-from .models import Employee, Department, Faculty, WorkRecord
+from .models import Employee, Department, Faculty, WorkRecord, Designation
 
 
 class EmployeeCreateForm(forms.ModelForm):
@@ -75,3 +75,15 @@ class WorkRecordUpdateForm(forms.ModelForm):
     class Meta:
         model = WorkRecord
         fields = ('employee', 'designation', 'role_name', 'from_date', 'to_date', 'is_additional', 'description')
+
+
+class DesignationCreateForm(forms.ModelForm):
+    class Meta:
+        model = Designation
+        fields = ('name', 'description')
+
+
+class DesignationUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Designation
+        fields = ('name', 'description')

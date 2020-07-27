@@ -2,9 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
+from .filters import *
 from .models import Employee, Department, Faculty, MyLog, WorkRecord
 from .forms import EmployeeUpdateForm, EmployeeCreateForm, DeptCreateForm, DeptUpdateForm, FacultyCreateForm, \
-    FacultyUpdateForm, WorkRecordCreateForm, WorkRecordUpdateForm
+    FacultyUpdateForm, WorkRecordCreateForm, WorkRecordUpdateForm, DesignationCreateForm, DesignationUpdateForm
 from django.views.generic import CreateView, UpdateView, DeleteView, FormView
 from braces.views import LoginRequiredMixin
 from datetime import datetime
@@ -42,7 +43,10 @@ class EmployeeDeleteView(DeleteView):
 
 def employee_list(request):
     employees = Employee.objects.order_by('id').all()
-    context = {'employees': employees}
+
+    employee_filter = EmployeeFilter(request.GET, queryset=employees)
+    employees = employee_filter.qs
+    context = {'employees': employees, 'employee_filter': employee_filter}
     return render(request, 'employee/employee_list.html', context)
 
 
@@ -190,4 +194,37 @@ def work_record_list(request):
     work_records = WorkRecord.objects.order_by('id').all()
     context = {'work_records': work_records}
     return render(request, 'employee/work-record/work_record_list.html', context)
+
+
+class DesignationCreateView(CreateView):
+    template_name = 'employee/designation/designation_add.html'
+    form_class = DesignationCreateForm
+
+    def post(self, request, *args, **kwargs):
+        form = DesignationCreateForm(request.POST)
+        if form.is_valid():
+            designation = form.save()
+            designation.created_by = request.user
+            designation.save()
+            messages.info(request, 'Designation Added')
+        return redirect('designation_list')
+
+
+class DesignationUpdateView(UpdateView):
+    model = Designation
+    template_name = 'employee/designation/designation_update.html'
+    form_class = DesignationUpdateForm
+    success_url = reverse_lazy('designation_list')
+
+
+class DesignationDeleteView(DeleteView):
+    model = Designation
+    template_name = 'employee/designation/designation_delete.html'
+    success_url = reverse_lazy('designation_list')
+
+
+def designation_list(request):
+    designations = Designation.objects.order_by('id').all()
+    context = {'designations': designations}
+    return render(request, 'employee/designation/designation_list.html', context)
 

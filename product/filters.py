@@ -8,6 +8,12 @@ class ProductFilter(django_filters.FilterSet):
         fields = ('p_name', 'country_of_origin', 'brand', 'p_details')
 
 
+class ProductPropertyFilter(django_filters.FilterSet):
+    class Meta:
+        model = Property
+        fields = ('property_name', 'property_value', 'property_details', 'product_id')
+
+
 class ProductItemFilter(django_filters.FilterSet):
     class Meta:
         model = ProductItem
@@ -15,8 +21,23 @@ class ProductItemFilter(django_filters.FilterSet):
                   'responsible_employee_id', 'dept_id', 'location_id', 'status_id')
 
 
+class ProductRepairFilter(django_filters.FilterSet):
+    class Meta:
+        model = Repair
+        fields = ('product_item_id', 'details', 'repair_request_date', 'actual_delivery_date', 'responsible_employee_id')
+
+
 class ProductCategoryFilter(django_filters.FilterSet):
     class Meta:
         model = ProductCategory
         fields = ('product_id', 'category_id')
+
+
+class CategoryFilter(django_filters.FilterSet):
+    class Meta:
+        model = Category
+        fields = ('category_name', 'details', 'parent_id')
+
+
+
 

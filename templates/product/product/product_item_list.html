@@ -10,16 +10,15 @@
     <p class="mb-4">  </p>
 
     <div class="row">
-    <div class = "col">
-        <div class ="card card-body">
-            <form method="get">
-                {{product_item_filter.form}}
-
-                <button class="btn btn-sm btn-info" type="submit"> Search</button>
-                <a href="{%  url 'product_item_list' %}" class="btn btn-sm btn-info">Clear</a>
-            </form>
+        <div class = "col">
+            <div class ="card card-body form-group" >
+                <form method="get">
+                    {{product_item_filter.form}}
+                    <button class="btn btn-sm btn-info" type="submit"> Search</button>
+                    <a href="{%  url 'product_item_list' %}" class="btn btn-sm btn-info">Clear</a>
+                </form>
+            </div>
         </div>
-    </div>
     </div>
     <br>
     <div class="card shadow mb-4">
@@ -28,6 +27,7 @@
       <font face="Times New Roman " size="2">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
+          <small>
             <tr>
                 <th >Product ID</th>
                 <th>Item Name</th>
@@ -40,9 +40,13 @@
                 <th>Status</th>
                 <th>Update</th>
                 <th>Delete</th>
+<!--                <th colspan="2" style="text-align:center">Action</th>-->
+
 
             </tr>
+          </small>
           </thead>
+
 
           <tbody>
             {% for productitem in product_items %}
@@ -57,8 +61,8 @@
                 <td>{{ productitem.location_id }}</td>
                 <td>{{ productitem.status_id }}</td>
 
-                <td><small><a href="{% url 'product_item_update' productitem.pk %}" class="btn btn-sm btn-info"><small>Edit</small></a></small></td>
-                <td><small><a href="{% url 'product_item_delete' productitem.pk %}" class="btn btn-sm btn-danger" ><small>Delete</small></a></small></td>
+                <td><a href="{% url 'product_item_update' productitem.pk %}" class="btn btn-sm btn-info"><small>Edit</small></a></td>
+                <td><a href="{% url 'product_item_delete' productitem.pk %}" class="btn btn-sm btn-danger"><small>Delete</small></a></td>
 
             </tr>
             {% endfor %}

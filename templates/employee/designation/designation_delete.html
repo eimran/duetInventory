@@ -5,7 +5,7 @@
 <!--{% load crispy_forms_tags %}-->
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Delete Faculty!!</h1>
+  <h1 class="h3 mb-2 text-gray-800">Delete Designation!!</h1>
   <p class="mb-4">  </p>
 
       <!-- DataTales Example -->
@@ -14,16 +14,15 @@
             <div class="row">
 
                 <ul>
-                    <li> Faculty Name:  {{ faculty.name }}</li>
-                    <li> Code: { faculty.code }}</li>
-                    <li> Description:{{ faculty.description }}</li>
+                    <li> Designation Name:  {{ designation.name }}</li>
+                    <li> Designation: {{ designation.description }}</li>
                 </ul>
             </div>
             <div class="row">
                  <form action="" method="POST">
                     {% csrf_token %}
                     <strong>Are you sure want to delete?</strong><br/><br/>
-                    <button type="submit" class="btn btn-primary">Delete</button>
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                 </form>
             </div>
         </div>

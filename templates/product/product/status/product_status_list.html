@@ -16,32 +16,34 @@
 <!--            </div>-->
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                        <th>SL</th>
-                        <th>Status Name</th>
-                        <th>Details</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+                  <font face="Times New Roman " size="2">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Status Name</th>
+                            <th>Details</th>
+                            <th>Update</th>
+                            <th>Delete</th>
 
-                    </tr>
-                  </thead>
+                        </tr>
+                      </thead>
 
-                  <tbody>
-                    {% for status in statuss %}
-                    <tr>
-                        <td>{{ status.id }}</td>
-                        <td>{{ status.status_name }}</td>
-                        <td>{{ status.details }}</td>
-                       <<td><small><a href="{% url 'product_status_update' status.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
-                        <td><small><a href="{% url 'product_status_delete' status.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
+                      <tbody>
+                        {% for status in statuss %}
+                        <tr>
+                            <td>{{ status.id }}</td>
+                            <td>{{ status.status_name }}</td>
+                            <td>{{ status.details }}</td>
+                            <td><a href="{% url 'product_status_update' status.pk %}" class="btn btn-sm btn-info"><small>Edit</small></a></td>
+                            <td><a href="{% url 'product_status_delete' status.pk %}" class="btn btn-sm btn-info"><small>Delete</small></a></td>
 
-                    </tr>
-                    {% endfor %}
+                        </tr>
+                        {% endfor %}
 
-                  </tbody>
-                </table>
+                      </tbody>
+                    </table>
+                  </font>
               </div>
             </div>
           </div>

@@ -52,7 +52,9 @@ class CategoryDeleteView(DeleteView):
 
 def category_list(request):
     categories = Category.objects.order_by('id').all()
-    context = {'categories': categories}
+    category_filter = CategoryFilter(request.GET, queryset=categories)
+    categories = category_filter.qs
+    context = {'categories': categories, 'category_filter': category_filter}
     return render(request, 'product/category/category_list.html', context)
 
 
@@ -68,6 +70,36 @@ class ProductCreateView(CreateView):
             product.save()
             messages.info(request, 'product inserted')
         return redirect('product_list')
+
+
+def product_add(request, category_id):
+    if request.method == 'POST':
+
+        p_name = request.POST.get('p_name', '')
+        country_of_origin = request.POST.get('country_of_origin', '')
+        brand = request.POST.get('brand', '')
+        p_details = request.POST.get('p_details', '')
+
+        current_user = request.user
+
+        product_obj = Product(p_name=p_name, country_of_origin=country_of_origin, brand=brand,
+                                p_details=p_details, created_by=current_user)
+        product_obj.save()
+
+        category_obj = Category.objects.get(pk= category_id)
+        product_category_obj = ProductCategory(product_id= product_obj, category_id= category_obj, created_by= current_user)
+        product_category_obj.save()
+
+        products = Product.objects.order_by('id').all()
+        context = {'products': products}
+
+        return render(request, 'product/product/product_list.html', context)
+
+    else:
+        context = {}
+        context['form'] = ProductCreateForm()
+        print(category_id)
+        return render(request, 'product/product/product_add.html', context)
 
 
 class ProductUpdateView(UpdateView):
@@ -209,7 +241,9 @@ class RepairDeleteView(DeleteView):
 
 def repair_list(request):
     repairs = Repair.objects.order_by('id').all()
-    context = {'repairs': repairs}
+    repair_filter = ProductRepairFilter(request.GET, queryset=repairs)
+    repairs = repair_filter.qs
+    context = {'repairs': repairs, 'repair_filter': repair_filter}
     return render(request, 'product/repair/repair_list.html', context)
 
 
@@ -326,5 +360,7 @@ class ProductPropertyDeleteView(DeleteView):
 
 def product_property_list(request):
     properties = Property.objects.order_by('id').all()
-    context = {'properties': properties}
+    property_filter = ProductPropertyFilter(request.GET, queryset=properties)
+    properties = property_filter.qs
+    context = {'properties': properties, 'property_filter': property_filter}
     return render(request, 'product/product/property/product_property_list.html', context)

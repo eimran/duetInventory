@@ -23,6 +23,10 @@ urlpatterns = [
     path('faculty/delete/<int:pk>', views.FacultyDeleteView.as_view(), name='faculty_delete'),
     path("faculty-list", views.faculty_list, name="faculty_list"),
     path('faculty/edit/<int:pk>', views.FacultyUpdateView.as_view(), name='faculty_update'),
-    # path('register', views.register, name='EmployeeRegister')
+
+    path('designation-add/', views.DesignationCreateView.as_view(), name='designation_add'),
+    path('designation/delete/<int:pk>', views.DesignationDeleteView.as_view(), name='designation_delete'),
+    path("designation-list", views.designation_list, name="designation_list"),
+    path('designation/edit/<int:pk>', views.DesignationUpdateView.as_view(), name='designation_update'),
 ]
 

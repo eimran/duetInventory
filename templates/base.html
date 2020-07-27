@@ -74,12 +74,19 @@
             <h6 class="collapse-header">Work Record:</h6>
             <a class="collapse-item" href="{% url 'work_record_add' %}">Add Work Record</a>
             <a class="collapse-item" href="{% url 'work_record_list' %}">Work Records</a>
+            <div class="collapse-divider"></div>
             <h6 class="collapse-header">Department:</h6>
             <a class="collapse-item" href="{% url 'dept_add' %}">Add Department</a>
             <a class="collapse-item" href="{% url 'dept_list' %}">Department List</a>
+            <div class="collapse-divider"></div>
             <h6 class="collapse-header">Faculty:</h6>
             <a class="collapse-item" href="{% url 'faculty_add' %}">Add Faculty</a>
             <a class="collapse-item" href="{% url 'faculty_list' %}">Faculty List</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Designation:</h6>
+            <a class="collapse-item" href="{% url 'designation_add' %}">Add Designation</a>
+            <a class="collapse-item" href="{% url 'designation_list' %}">Designation List</a>
+            <div class="collapse-divider"></div>
           </div>
         </div>
       </li>
@@ -94,7 +101,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
 
             <h6 class="collapse-header">Product:</h6>
-            <a class="collapse-item" href="{% url 'product_add' %}">Add Product</a>
+            <a class="collapse-item" href="{% url 'category_list' %}">Add Product</a>
             <a class="collapse-item" href="{% url 'product_list' %}">Product List</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Property:</h6>
@@ -150,7 +157,7 @@
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Product Location Table:</h6>
             <a class="collapse-item" href="{% url 'product_location_add' %}">Add Product Location</a>
-            <a class="collapse-item" href="{% url 'product_location_list' %}">Product Status Location</a>
+            <a class="collapse-item" href="{% url 'product_location_list' %}">Product Location List</a>
 
 
           </div>
