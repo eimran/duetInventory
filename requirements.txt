@@ -1,3 +1,7 @@
 django==3.0.8
 psycopg2==2.8.5
 django-bootstrap4
+django-braces
+django-dirtyfields
+Pillow
+django-filter
