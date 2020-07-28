@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'employee',
     'accounts',
     'product',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +95,7 @@ DATABASES = {
 }
 
 #
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',

@@ -61,28 +61,8 @@ class Account(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.username + self.employee.employee_no
 
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
 
-def has_perm(self, perm, obj=None):
-    return self.is_admin
-
-
-def has_module_perms(self, app_label):
-    return self.is_superuser
-
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
-#
-#
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
-#
-#
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()
-
-# class User(AbstractUser):
-#     employee_id = models.ForeignKey(Employee, verbose_name='Employee', on_delete=models.PROTECT)
+    def has_module_perms(self, app_label):
+        return self.is_superuser

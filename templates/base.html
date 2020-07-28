@@ -24,6 +24,8 @@
   <!-- Custom styles for this page -->
   <link href="{% static 'product/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
 
+<!--  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">-->
+
 </head>
 
 <body id="page-top">
@@ -71,12 +73,22 @@
             <a class="collapse-item" href="{% url 'employee_add' %}">Add Employee</a>
             <a class="collapse-item" href="{% url 'employee_list' %}">Employee List</a>
             <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Work Record:</h6>
+            <a class="collapse-item" href="{% url 'work_record_add' %}">Add Work Record</a>
+            <a class="collapse-item" href="{% url 'work_record_list' %}">Work Records</a>
+            <div class="collapse-divider"></div>
             <h6 class="collapse-header">Department:</h6>
             <a class="collapse-item" href="{% url 'dept_add' %}">Add Department</a>
             <a class="collapse-item" href="{% url 'dept_list' %}">Department List</a>
+            <div class="collapse-divider"></div>
             <h6 class="collapse-header">Faculty:</h6>
             <a class="collapse-item" href="{% url 'faculty_add' %}">Add Faculty</a>
             <a class="collapse-item" href="{% url 'faculty_list' %}">Faculty List</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Designation:</h6>
+            <a class="collapse-item" href="{% url 'designation_add' %}">Add Designation</a>
+            <a class="collapse-item" href="{% url 'designation_list' %}">Designation List</a>
+            <div class="collapse-divider"></div>
           </div>
         </div>
       </li>
@@ -89,29 +101,19 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Category: </h6>
-            <a class="collapse-item" href="{% url 'category_add' %}">Add Category</a>
-            <a class="collapse-item" href="{% url 'category_list' %}">Category List</a>
-            <div class="collapse-divider"></div>
+
             <h6 class="collapse-header">Product:</h6>
-            <a class="collapse-item" href="{% url 'product_add' %}">Add Product</a>
+            <a class="collapse-item" href="{% url 'category_list' %}">Add Product</a>
             <a class="collapse-item" href="{% url 'product_list' %}">Product List</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Property:</h6>
             <a class="collapse-item" href="{% url 'product_property_add' %}">Add Product Property</a>
             <a class="collapse-item" href="{% url 'product_property_list' %}">Product Property List</a>
 
+            <div class="collapse-divider"></div>
             <h6 class="collapse-header">Product Item:</h6>
             <a class="collapse-item" href="{% url 'product_item_add' %}">Add Product Item</a>
             <a class="collapse-item" href="{% url 'product_item_list' %}">Product Item List</a>
-
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Product Status Table:</h6>
-            <a class="collapse-item" href="{% url 'product_status_add' %}">Add Product Status</a>
-            <a class="collapse-item" href="{% url 'product_status_list' %}">Product Status List</a>
-
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Product Location Table:</h6>
-            <a class="collapse-item" href="{% url 'product_location_add' %}">Add Product Location</a>
-            <a class="collapse-item" href="{% url 'product_location_list' %}">Product Status Location</a>
 
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Repair:</h6>
@@ -120,6 +122,54 @@
           </div>
         </div>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3" aria-expanded="true" aria-controls="collapsePages3">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Category</span>
+        </a>
+        <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Category: </h6>
+            <a class="collapse-item" href="{% url 'category_add' %}">Add Category</a>
+            <a class="collapse-item" href="{% url 'category_list' %}">Category List</a>
+            <div class="collapse-divider"></div>
+
+            <h6 class="collapse-header">Category wise product : </h6>
+            <a class="collapse-item" href="{% url 'product_category_add' %}">Add </a>
+            <a class="collapse-item" href="{% url 'product_category_list' %}">List</a>
+            <div class="collapse-divider"></div>
+
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages4" aria-expanded="true" aria-controls="collapsePages4">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Product Miscellaneous</span>
+        </a>
+        <div id="collapsePages4" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Product Status Table:</h6>
+            <a class="collapse-item" href="{% url 'product_status_add' %}">Add Product Status</a>
+            <a class="collapse-item" href="{% url 'product_status_list' %}">Product Status List</a>
+
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Product Location Table:</h6>
+            <a class="collapse-item" href="{% url 'product_location_add' %}">Add Product Location</a>
+            <a class="collapse-item" href="{% url 'product_location_list' %}">Product Location List</a>
+
+
+          </div>
+        </div>
+      </li>
+
+
+
+
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -285,7 +335,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.employee.first_name}} {{user.employee.last_name}} </span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60">
+                <img class="img-profile rounded-circle" src="/media/{{ user.employee.image }}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -387,6 +437,14 @@
 
   <!-- Page level custom scripts -->
   <script src="{% static 'product/js/demo/datatables-demo.js' %}"></script>
+
+<!--  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+<!--  <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>-->
+<!--  <script>-->
+<!--  $(document).ready(function() {-->
+<!--      $('.datepicker').datepicker();-->
+<!--  });-->
+<!--  </script>-->
 
 </body>
 

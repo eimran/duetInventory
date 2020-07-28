@@ -2,60 +2,71 @@
 
 {% block content %}
 
-
 <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Product Listing </h1>
-          <p class="mb-4">  </p>
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-<!--            <div class="card-header py-3">-->
-<!--              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
-<!--            </div>-->
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Country of Origin</th>
-                        <th>Brand</th>
-                        <th>Product Details</th>
-                        <th>Created At</th>
-                        <th>Created By</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {% for product in products %}
-                    <tr>
-                        <td>{{ product.id }}</td>
-                        <td>{{ product.p_name }}</td>
-                        <td>{{ product.country_of_origin }}</td>
-                        <td>{{ product.brand }}</td>
-                        <td>{{ product.p_details }}</td>
-                        <td>{{ product.created_at }}</td>
-                        <td>{{ product.created_by }}</td>
-                       <<td><small><a href="{% url 'product_update' product.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
-                        <td><small><a href="{% url 'product_delete' product.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
-
-                    </tr>
-                    {% endfor %}
-
-                  </tbody>
-                </table>
-              </div>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Product Listing </h1>
+    <p class="mb-4">  </p>
+    <div class="row">
+        <div class = "col">
+            <div class ="card card-body">
+                <form method="get">
+                    {{myFilter.form}}
+                    <button class="btn btn-sm btn-info" type="submit"> Search</button>
+                    <a href="{%  url 'product_list' %}" class="btn btn-sm btn-info">Clear</a>
+                </form>
             </div>
-          </div>
-
         </div>
-        <!-- /.container-fluid -->
+    </div>
 
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+          <font face="Times New Roman " size="2">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>Product Name</th>
+                    <th>Country of Origin</th>
+                    <th>Brand</th>
+                    <th>Product Details</th>
+                    <th>Created At</th>
+                    <th>Image</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ product.p_name }}</td>
+                    <td>{{ product.country_of_origin }}</td>
+                    <td>{{ product.brand }}</td>
+                    <td>{{ product.p_details }}</td>
+                    <td>{{ product.created_at }}</td>
+
+                    {% if product.image %}
+                        <td><img src="/media/{{ product.image }}" width='200' height='200'> </td>
+                    {% else %}
+                        <td>No photos</td>
+                    {% endif %}
+
+                    <td><a href="{% url 'product_update' product.pk %}" class="btn btn-sm btn-info"><small>Edit</small></a></td>
+                    <td><a href="{% url 'product_delete' product.pk %}" class="btn btn-sm btn-danger"><small>Delete</small></a></td>
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </font>
       </div>
+    </div>
+    </div>
+
+</div>
 
 {% endblock %}

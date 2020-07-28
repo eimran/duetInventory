@@ -1,14 +1,12 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from django.contrib import messages
+from .filters import *
+from .forms import *
 from django.conf import settings
-from .models import Category, Product, ProductItem, Repair, Status, Location, Property
-from .forms import CategoryCreateForm, CategoryUpdateForm, ProductCreateForm, \
-    ProductUpdateForm, RepairCreateForm, RepairUpdateForm, ProductItemCreateForm, ProductItemUpdateForm, \
-    ProductStatusCreateForm, ProductStatusUpdateForm, ProductLocationCreateForm, ProductLocationUpdateForm, \
-    ProductPropertyCreateForm, ProductPropertyUpdateForm
+from .models import Category, Product, ProductItem, Repair, Status, Location, Property, ProductCategory
 
 
 def category_add(request):
@@ -54,7 +52,9 @@ class CategoryDeleteView(DeleteView):
 
 def category_list(request):
     categories = Category.objects.order_by('id').all()
-    context = {'categories': categories}
+    category_filter = CategoryFilter(request.GET, queryset=categories)
+    categories = category_filter.qs
+    context = {'categories': categories, 'category_filter': category_filter}
     return render(request, 'product/category/category_list.html', context)
 
 
@@ -62,25 +62,48 @@ class ProductCreateView(CreateView):
     template_name = 'product/product/product_add.html'
     form_class = ProductCreateForm
 
-    # def get_initial(self, *args, **kwargs):
-    #     initial = super(ProductCreateView, self).get_initial(**kwargs)
-    #     initial['category_name'] = 'My Product'
-    #     return initial
-
     def post(self, request, *args, **kwargs):
-        form = ProductCreateForm(request.POST)
+        form = ProductCreateForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
             product.created_by = request.user
             product.save()
             messages.info(request, 'product inserted')
-        return render(request, 'product/product_list.html', {'form': form})
+        return redirect('product_list')
+
+
+def product_add(request, category_id):
+    if request.method == 'POST':
+        form = ProductCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            product.created_by = request.user
+            current_user = request.user
+            product.save()
+
+            category_obj = Category.objects.get(pk=category_id)
+
+            product_category_obj = ProductCategory(product_id=product, category_id=category_obj,
+                                                   created_by=current_user)
+            product_category_obj.save()
+
+            products = Product.objects.order_by('id').all()
+            context = {'products': products}
+
+            return render(request, 'product/product/product_list.html', context)
+
+    else:
+        context = {}
+        context['form'] = ProductCreateForm()
+        print(category_id)
+        return render(request, 'product/product/product_add.html', context)
 
 
 class ProductUpdateView(UpdateView):
     model = Product
     template_name = 'product/product/product_update.html'
     form_class = ProductUpdateForm
+    success_url = reverse_lazy('product_list')
 
 
 class ProductDeleteView(DeleteView):
@@ -91,8 +114,56 @@ class ProductDeleteView(DeleteView):
 
 def product_list(request):
     products = Product.objects.order_by('id').all()
-    context = {'products': products}
+    myFilter = ProductFilter(request.GET, queryset=products)
+    products = myFilter.qs
+    context = {'products': products, 'myFilter': myFilter}
     return render(request, 'product/product/product_list.html', context)
+
+
+# class ProductListView(ListView):
+#     model = Product
+#     myFilter = ProductFilter()
+#     template_name = 'product/product/product_list.html'
+
+
+class ProductCategoryCreateView(CreateView):
+    template_name = 'product/product_category/product_category_add.html'
+    form_class = ProductCategoryCreateForm
+
+    # def get_initial(self, *args, **kwargs):
+    #     initial = super(ProductCreateView, self).get_initial(**kwargs)
+    #     initial['category_name'] = 'My Product'
+    #     return initial
+
+    def post(self, request, *args, **kwargs):
+        form = ProductCategoryCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            pCat = form.save()
+            pCat.created_by = request.user
+            pCat.save()
+            messages.info(request, 'product inserted')
+        return redirect('product_category_list')
+
+
+class ProductCategoryUpdateView(UpdateView):
+    model = ProductCategory
+    template_name = 'product/product_category/product_category_update.html'
+    form_class = ProductCategoryUpdateForm
+    success_url = reverse_lazy('product_category_list')
+
+
+class ProductCategoryDeleteView(DeleteView):
+    model = ProductCategory
+    template_name = 'product/product_category/product_category_delete.html'
+    success_url = reverse_lazy('product_category_list')
+
+
+def product_category_list(request):
+    pcats = ProductCategory.objects.order_by('id').all()
+    product_category_filter = ProductCategoryFilter(request.GET, queryset=pcats)
+    pcats = product_category_filter.qs
+    context = {'pcats': pcats, 'product_category_filter': product_category_filter}
+    return render(request, 'product/product_category/product_category_list.html', context)
 
 
 class ProductItemCreateView(CreateView):
@@ -125,7 +196,9 @@ class ProductItemDeleteView(DeleteView):
 
 def product_item_list(request):
     product_items = ProductItem.objects.order_by('id').all()
-    context = {'product_items': product_items}
+    product_item_filter = ProductItemFilter(request.GET, queryset=product_items)
+    product_items = product_item_filter.qs
+    context = {'product_items': product_items, 'product_item_filter': product_item_filter}
     return render(request, 'product/product/product_item_list.html', context)
 
 
@@ -165,7 +238,9 @@ class RepairDeleteView(DeleteView):
 
 def repair_list(request):
     repairs = Repair.objects.order_by('id').all()
-    context = {'repairs': repairs}
+    repair_filter = ProductRepairFilter(request.GET, queryset=repairs)
+    repairs = repair_filter.qs
+    context = {'repairs': repairs, 'repair_filter': repair_filter}
     return render(request, 'product/repair/repair_list.html', context)
 
 
@@ -282,6 +357,7 @@ class ProductPropertyDeleteView(DeleteView):
 
 def product_property_list(request):
     properties = Property.objects.order_by('id').all()
-    context = {'properties': properties}
+    property_filter = ProductPropertyFilter(request.GET, queryset=properties)
+    properties = property_filter.qs
+    context = {'properties': properties, 'property_filter': property_filter}
     return render(request, 'product/product/property/product_property_list.html', context)
-

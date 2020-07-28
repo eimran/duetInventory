@@ -8,46 +8,56 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Product Category Listing </h1>
           <p class="mb-4">  </p>
+            <div class="row">
+                <div class = "col">
+                    <div class ="card card-body">
+                        <form method="get">
+                            {{category_filter.form}}
+                            <button class="btn btn-sm btn-info" type="submit"> Search</button>
+                            <a href="{%  url 'category_list' %}" class="btn btn-sm btn-info">Clear</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-          <!-- DataTales Example -->
           <div class="card shadow mb-4">
-<!--            <div class="card-header py-3">-->
-<!--              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
-<!--            </div>-->
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                        <th>Category ID</th>
-                        <th>Category Name</th>
-                        <th>Details</th>
-                        <th>Parent Category</th>
-                        <th>Created At</th>
-                        <th>Created By</th>
-                        <th>Active</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                    </tr>
-                  </thead>
+                  <font face="Times New Roman " size="2">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Category Name</th>
+                            <th>Details</th>
+                            <th>Parent Category</th>
+                            <th>Created At</th>
+                            <th>Created By</th>
+                            <th>Active</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                            <th>Add Prouct</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for category in categories %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ category.category_name }}</td>
+                            <td>{{ category.details }}</td>
+                            <td>{% if category.parent_id %}{{ category.parent_id.category_name }}{% endif %}</td>
+                            <td>{{ category.created_at }}</td>
+                            <td>{{ category.created_by }}</td>
+                            <td>{{ category.active_status }}</td>
+                            <td><a href="{% url 'category_update' category.pk %}" class="btn btn-sm btn-info"><small>Edit</small></a></td>
+                            <td><a href="{% url 'category_delete' category.pk %}" class="btn btn-sm btn-danger"><small>Delete</small></a></td>
+                            <td><a href="{% url 'product_add2' category.pk %}" class="btn btn-sm btn-danger"><small>Add Product</small></a></td>
+                        </tr>
+                        {% endfor %}
 
-                  <tbody>
-                    {% for category in categories %}
-                    <tr>
-                        <td>{{ category.id }}</td>
-                        <td>{{ category.category_name }}</td>
-                        <td>{{ category.details }}</td>
-                        <td>{% if category.parent_id %}{{ category.parent_id.category_name }}{% endif %}</td>
-                        <td>{{ category.created_at }}</td>
-                        <td>{{ category.created_by }}</td>
-                        <td>{{ category.active_status }}</td>
-                        <td><small><a href="{% url 'category_update' category.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
-                        <td><small><a href="{% url 'category_delete' category.pk %}"class="fa fa-cut" style="color:red">Delete</a></small></td>
-                    </tr>
-                    {% endfor %}
-
-                  </tbody>
-                </table>
+                      </tbody>
+                    </table>
+                  </font>
               </div>
             </div>
           </div>

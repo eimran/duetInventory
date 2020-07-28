@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Category wise product listing </h1>
+    <p class="mb-4">  </p>
+    <div class="row">
+        <div class = "col">
+            <div class ="card card-body">
+                <form method="get">
+                    {{product_category_filter.form}}
+                    <button class="btn btn-sm btn-info" type="submit"> Search</button>
+                    <a href="{%  url 'product_category_list' %}" class="btn btn-sm btn-info">Clear</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+          <font face="Times New Roman " size="2">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product ID</th>
+                <th>Category ID</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for pcat in pcats %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ pcat.product_id }}</td>
+                <td>{{ pcat.category_id }}</td>
+
+                <td><a href="{% url 'product_category_update' pcat.pk %}" class="btn btn-sm btn-info"><small>Edit</small></a></td>
+                <td><a href="{% url 'product_category_delete' pcat.pk %}" class="btn btn-sm btn-danger" ><small>Delete</small></a></td>
+
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+          </font>
+      </div>
+    </div>
+    </div>
+
+</div>
+
+{% endblock %}

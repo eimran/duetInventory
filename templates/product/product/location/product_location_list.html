@@ -5,50 +5,51 @@
 
 <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Product Location Listing </h1>
-          <p class="mb-4">  </p>
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Product Location Listing </h1>
+  <p class="mb-4">  </p>
 
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
 <!--            <div class="card-header py-3">-->
 <!--              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>-->
 <!--            </div>-->
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                        <th>SL</th>
-                        <th>Location Name</th>
-                        <th>Details</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+    <div class="card-body">
+      <div class="table-responsive">
+          <font face="Times New Roman " size="2">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+                <th>SL</th>
+                <th>Location Name</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
 
-                    </tr>
-                  </thead>
+            </tr>
+          </thead>
 
-                  <tbody>
-                    {% for location in locations %}
-                    <tr>
-                        <td>{{ location.id }}</td>
-                        <td>{{ location.location_name }}</td>
-                        <td>{{ location.details }}</td>
-                       <<td><small><a href="{% url 'product_location_update' location.pk %}" class="fa fa-edit" style="color:green">Edit</a></small></td>
-                        <td><small><a href="{% url 'product_location_delete' location.pk %}" class="fa fa-cut" style="color:red" >Delete</a></small></td>
+          <tbody>
+            {% for location in locations %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ location.location_name }}</td>
+                <td>{{ location.details }}</td>
+                <td><a href="{% url 'product_location_update' location.pk %}" class="btn btn-sm btn-info" ><small>Edit</small></a></td>
+                <td><a href="{% url 'product_location_delete' location.pk %}" class="btn btn-sm btn-danger" ><small>Delete</small></a></td>
 
-                    </tr>
-                    {% endfor %}
+            </tr>
+            {% endfor %}
 
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+          </tbody>
+        </table>
+          </font>
+      </div>
+    </div>
+  </div>
 
-        </div>
+</div>
         <!-- /.container-fluid -->
 
-      </div>
 
 {% endblock %}

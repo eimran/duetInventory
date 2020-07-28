@@ -6,7 +6,9 @@ urlpatterns = [
     path("category-list", views.category_list, name="category_list"),
     path("category-add/", views.category_add, name='category_add'),
     path("product-list", views.product_list, name="product_list"),
+    # path("product-list", views.ProductListView.as_view(), name="product_list"),
     path('product-add/', views.ProductCreateView.as_view(), name='product_add'),
+    path('product-add/<category_id>', views.product_add, name='product_add2'),
     path('product/edit/<int:pk>', views.ProductUpdateView.as_view(), name='product_update'),
     path('product/delete/<int:pk>', views.ProductDeleteView.as_view(), name='product_delete'),
     path('category/edit/<int:pk>', views.CategoryUpdateView.as_view(), name='category_update'),
@@ -37,6 +39,11 @@ urlpatterns = [
     path("product-property-list", views.product_property_list, name="product_property_list"),
     path('product-property/edit/<int:pk>', views.ProductPropertyUpdateView.as_view(), name='product_property_update'),
     path('product-property/delete/<int:pk>', views.ProductPropertyDeleteView.as_view(), name='product_property_delete'),
+
+    path('product-category-add/', views.ProductCategoryCreateView.as_view(), name='product_category_add'),
+    path("product-category-list", views.product_category_list, name="product_category_list"),
+    path('product-category/edit/<int:pk>', views.ProductCategoryUpdateView.as_view(), name='product_category_update'),
+    path('product-category/delete/<int:pk>', views.ProductCategoryDeleteView.as_view(), name='product_category_delete'),
 
 ]
 

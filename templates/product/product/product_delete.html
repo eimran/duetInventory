@@ -24,7 +24,9 @@
 
                 {% csrf_token %}
                 <strong>Are you sure want to delete?</strong><br/><br/>
-                    <button type="submit" class="btn btn-primary">Delete</button>
+                    <small><button type="submit" class="btn btn-sm btn-danger">Delete</button></small>
+                    <small><a href="{% url 'product_list' %}" class="btn btn-sm btn-info">Cancel</a></small>
+
                 </form>
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3"></div>
