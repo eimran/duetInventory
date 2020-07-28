@@ -39,7 +39,7 @@
           <tbody>
             {% for pcat in pcats %}
             <tr>
-                <td>{{ pcat.id }}</td>
+                <td>{{ forloop.counter }}</td>
                 <td>{{ pcat.product_id }}</td>
                 <td>{{ pcat.category_id }}</td>
 

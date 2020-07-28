@@ -20,6 +20,12 @@ class ProductItemFilter(django_filters.FilterSet):
         fields = ('p_item_name', 'qr_code_key', 'product_id', 'purchase_date', 'expiry_date',
                   'responsible_employee_id', 'dept_id', 'location_id', 'status_id')
 
+    def __init__(self, *args, **kwargs):
+        super(ProductItemFilter, self).__init__(*args, **kwargs)
+        self.filters['p_item_name'].label = "Item Name"
+        # self.filters['p_item_name'].extra.update(
+        #     {'p_item_name': 'Item Name'})
+
 
 class ProductRepairFilter(django_filters.FilterSet):
     class Meta:

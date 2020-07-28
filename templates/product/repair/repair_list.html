@@ -45,7 +45,7 @@
             {% for repair in repairs %}
             <tr>
 
-                <td>{{ repair.id }}</td>
+                <td>{{ forloop.counter }}</td>
                 <td>{{ repair.product_item_id }}</td>
                 <td>{{ repair.details }}</td>
                 <td>{{ repair.repair_request_date }}</td>

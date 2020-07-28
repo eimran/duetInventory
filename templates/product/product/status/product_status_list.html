@@ -32,11 +32,11 @@
                       <tbody>
                         {% for status in statuss %}
                         <tr>
-                            <td>{{ status.id }}</td>
+                            <td>{{ forloop.counter }}</td>
                             <td>{{ status.status_name }}</td>
                             <td>{{ status.details }}</td>
                             <td><a href="{% url 'product_status_update' status.pk %}" class="btn btn-sm btn-info"><small>Edit</small></a></td>
-                            <td><a href="{% url 'product_status_delete' status.pk %}" class="btn btn-sm btn-info"><small>Delete</small></a></td>
+                            <td><a href="{% url 'product_status_delete' status.pk %}" class="btn btn-sm btn-danger"><small>Delete</small></a></td>
 
                         </tr>
                         {% endfor %}

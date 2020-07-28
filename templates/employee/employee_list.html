@@ -41,14 +41,14 @@
           <tbody>
             {% for employee in employees %}
             <tr>
-                <td>{{ employee.id }}</td>
+                <td>{{ forloop.counter }}</td>
                 <td>{{ employee.first_name }} {{ employee.last_name }}</td>
                 <td>{{ employee.cell_no }}</td>
                 <td>{{ employee.email }}</td>
                 <td>{{ employee.address }}</td>
                 <td>{{ employee.gender }}</td>
                 {% if employee.image %}
-                    <td><img src="/media/{{ employee.image }}" width='200' height='200'>   </td>
+                    <td><img src="/media/{{ employee.image }}" width='200' height='240'>   </td>
                 {% else %}
                     <td>No photos</td>
                 {% endif %}

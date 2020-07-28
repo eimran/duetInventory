@@ -33,7 +33,7 @@
                   <tbody>
                     {% for work_record in work_records %}
                     <tr>
-                        <td>{{ work_record.id }}</td>
+                        <td>{{ forloop.counter }}</td>
                         <td>{{ work_record.employee }}</td>
                         <td>{{ work_record.designation.name }}</td>
                         <td>{{ work_record.role_name }}</td>

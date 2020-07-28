@@ -27,7 +27,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                            <th>Category ID</th>
+                            <th>SL</th>
                             <th>Category Name</th>
                             <th>Details</th>
                             <th>Parent Category</th>
@@ -42,7 +42,7 @@
                       <tbody>
                         {% for category in categories %}
                         <tr>
-                            <td>{{ category.id }}</td>
+                            <td>{{ forloop.counter }}</td>
                             <td>{{ category.category_name }}</td>
                             <td>{{ category.details }}</td>
                             <td>{% if category.parent_id %}{{ category.parent_id.category_name }}{% endif %}</td>

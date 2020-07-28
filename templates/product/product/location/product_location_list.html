@@ -32,7 +32,7 @@
           <tbody>
             {% for location in locations %}
             <tr>
-                <td>{{ location.id }}</td>
+                <td>{{ forloop.counter }}</td>
                 <td>{{ location.location_name }}</td>
                 <td>{{ location.details }}</td>
                 <td><a href="{% url 'product_location_update' location.pk %}" class="btn btn-sm btn-info" ><small>Edit</small></a></td>

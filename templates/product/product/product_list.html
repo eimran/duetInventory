@@ -27,7 +27,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                    <th>Product ID</th>
+                    <th>SL</th>
                     <th>Product Name</th>
                     <th>Country of Origin</th>
                     <th>Brand</th>
@@ -42,7 +42,7 @@
               <tbody>
                 {% for product in products %}
                 <tr>
-                    <td>{{ product.id }}</td>
+                    <td>{{ forloop.counter }}</td>
                     <td>{{ product.p_name }}</td>
                     <td>{{ product.country_of_origin }}</td>
                     <td>{{ product.brand }}</td>

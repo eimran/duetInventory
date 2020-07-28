@@ -40,7 +40,7 @@
                   <tbody>
                     {% for property in properties %}
                     <tr>
-                        <td>{{ property.id }}</td>
+                        <td>{{ forloop.counter }}</td>
                         <td>{{ property.property_name }}</td>
                         <td>{{ property.property_value }}</td>
                         <td>{{ property.property_details }}</td>

@@ -29,7 +29,7 @@
           <thead>
           <small>
             <tr>
-                <th >Product ID</th>
+                <th>SL</th>
                 <th>Item Name</th>
                 <th>QR Code</th>
                 <th>Product Name</th>
@@ -52,7 +52,7 @@
           <tbody>
             {% for productitem in product_items %}
             <tr>
-                <td>{{ productitem.id }}</td>
+                <td>{{ forloop.counter }}</td>
                 <td>{{ productitem.p_item_name }}</td>
                 <td>{{ productitem.qr_code_key }}</td>
                 <td>{{ productitem.product_id }}</td>

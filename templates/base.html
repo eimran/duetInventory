@@ -23,7 +23,9 @@
 
   <!-- Custom styles for this page -->
   <link href="{% static 'product/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+
+<!--  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">-->
+
 </head>
 
 <body id="page-top">
@@ -333,7 +335,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.employee.first_name}} {{user.employee.last_name}} </span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60">
+                <img class="img-profile rounded-circle" src="/media/{{ user.employee.image }}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -436,13 +438,13 @@
   <!-- Page level custom scripts -->
   <script src="{% static 'product/js/demo/datatables-demo.js' %}"></script>
 
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-  <script>
-  $(document).ready(function() {
-      $('.datepicker').datepicker();
-  });
-  </script>
+<!--  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+<!--  <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>-->
+<!--  <script>-->
+<!--  $(document).ready(function() {-->
+<!--      $('.datepicker').datepicker();-->
+<!--  });-->
+<!--  </script>-->
 
 </body>
 
